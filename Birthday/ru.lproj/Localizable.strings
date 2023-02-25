@@ -1,0 +1,19 @@
+/* No comment provided by engineer. */
+"Contacts_Card" = "Карточка контакта";
+
+"Navigation.Title" = "Дни рождения";
+
+/* File: ContentView.  struct ToggleView  */
+"Listed.By.month" = "Помесячно:";
+
+/* File: ContentView.  struct ContentView.  Searchbar's prompt  */
+"Фамилия, имя или отчество" = "Фамилия, имя или отчество";
+
+/* File: GroupByMonth.  struct GroupByMonth.  Section's header */
+"В этом месяце" = "В этом месяце";
+
+/* File: ContentView.  Search header  */
+"Результат поиска:" = "Результат поиска:";
+
+
+"Contact.Access.Alert" = "Разрешите доступ у контактам";

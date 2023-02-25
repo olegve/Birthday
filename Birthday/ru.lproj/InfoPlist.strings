@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Birthday
+
+  Created by Ефремов Олег on 12.02.2023.
+  
+*/
+
+"CFBundleDisplayName" = "Дни рождения";
+"NSHumanReadableCopyright" = "2023. Ефремов Данила. Все права зарегестрированы.";
