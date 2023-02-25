@@ -17,6 +17,12 @@
 		BC3F91E2299C10E700B736BF /* Months.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91E1299C10E700B736BF /* Months.swift */; };
 		BCBE9A4529A2035600763F3C /* DataSets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBE9A4429A2035600763F3C /* DataSets.swift */; };
 		BCC5F533299A95BA007F3E51 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC5F532299A95BA007F3E51 /* DateExtension.swift */; };
+		BCD3253C29AA43B00086C721 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD3253B29AA43B00086C721 /* WidgetKit.framework */; };
+		BCD3253E29AA43B00086C721 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD3253D29AA43B00086C721 /* SwiftUI.framework */; };
+		BCD3254129AA43B00086C721 /* BirthdayWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3254029AA43B00086C721 /* BirthdayWidgetBundle.swift */; };
+		BCD3254329AA43B00086C721 /* BirthdayWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3254229AA43B00086C721 /* BirthdayWidget.swift */; };
+		BCD3254529AA43B30086C721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD3254429AA43B30086C721 /* Assets.xcassets */; };
+		BCD3254929AA43B30086C721 /* BirthdayWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BCD3253929AA43B00086C721 /* BirthdayWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BCE3BB652997AC6D00976789 /* BirthdayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE3BB642997AC6D00976789 /* BirthdayApp.swift */; };
 		BCE3BB692997AC7100976789 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCE3BB682997AC7100976789 /* Assets.xcassets */; };
 		BCE3BB6C2997AC7100976789 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCE3BB6B2997AC7100976789 /* Preview Assets.xcassets */; };
@@ -25,6 +31,30 @@
 		BCED06AF2998FA4200FB2739 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCED06AD2998FA4200FB2739 /* InfoPlist.strings */; };
 		BCED06B32998FF5700FB2739 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED06B22998FF5700FB2739 /* CellView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BCD3254729AA43B30086C721 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCE3BB592997AC6D00976789 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCD3253829AA43B00086C721;
+			remoteInfo = BirthdayWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BCD3254A29AA43B30086C721 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BCD3254929AA43B30086C721 /* BirthdayWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BC21E21829A0E5B600835DF5 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
@@ -38,6 +68,13 @@
 		BC3F91E1299C10E700B736BF /* Months.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Months.swift; sourceTree = "<group>"; };
 		BCBE9A4429A2035600763F3C /* DataSets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSets.swift; sourceTree = "<group>"; };
 		BCC5F532299A95BA007F3E51 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		BCD3253929AA43B00086C721 /* BirthdayWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BirthdayWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD3253B29AA43B00086C721 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		BCD3253D29AA43B00086C721 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		BCD3254029AA43B00086C721 /* BirthdayWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayWidgetBundle.swift; sourceTree = "<group>"; };
+		BCD3254229AA43B00086C721 /* BirthdayWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayWidget.swift; sourceTree = "<group>"; };
+		BCD3254429AA43B30086C721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCD3254629AA43B30086C721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCE3BB612997AC6D00976789 /* Birthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE3BB642997AC6D00976789 /* BirthdayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayApp.swift; sourceTree = "<group>"; };
 		BCE3BB682997AC7100976789 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +90,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BCD3253629AA43B00086C721 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD3253E29AA43B00086C721 /* SwiftUI.framework in Frameworks */,
+				BCD3253C29AA43B00086C721 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCE3BB5E2997AC6D00976789 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -104,10 +150,32 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		BCD3253A29AA43B00086C721 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCD3253B29AA43B00086C721 /* WidgetKit.framework */,
+				BCD3253D29AA43B00086C721 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BCD3253F29AA43B00086C721 /* BirthdayWidget */ = {
+			isa = PBXGroup;
+			children = (
+				BCD3254029AA43B00086C721 /* BirthdayWidgetBundle.swift */,
+				BCD3254229AA43B00086C721 /* BirthdayWidget.swift */,
+				BCD3254429AA43B30086C721 /* Assets.xcassets */,
+				BCD3254629AA43B30086C721 /* Info.plist */,
+			);
+			path = BirthdayWidget;
+			sourceTree = "<group>";
+		};
 		BCE3BB582997AC6D00976789 = {
 			isa = PBXGroup;
 			children = (
 				BCE3BB632997AC6D00976789 /* Birthday */,
+				BCD3253F29AA43B00086C721 /* BirthdayWidget */,
+				BCD3253A29AA43B00086C721 /* Frameworks */,
 				BCE3BB622997AC6D00976789 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				BCE3BB612997AC6D00976789 /* Birthday.app */,
+				BCD3253929AA43B00086C721 /* BirthdayWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,6 +224,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BCD3253829AA43B00086C721 /* BirthdayWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCD3254D29AA43B30086C721 /* Build configuration list for PBXNativeTarget "BirthdayWidgetExtension" */;
+			buildPhases = (
+				BCD3253529AA43B00086C721 /* Sources */,
+				BCD3253629AA43B00086C721 /* Frameworks */,
+				BCD3253729AA43B00086C721 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BirthdayWidgetExtension;
+			productName = BirthdayWidgetExtension;
+			productReference = BCD3253929AA43B00086C721 /* BirthdayWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		BCE3BB602997AC6D00976789 /* Birthday */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCE3BB6F2997AC7100976789 /* Build configuration list for PBXNativeTarget "Birthday" */;
@@ -162,10 +248,12 @@
 				BCE3BB5D2997AC6D00976789 /* Sources */,
 				BCE3BB5E2997AC6D00976789 /* Frameworks */,
 				BCE3BB5F2997AC6D00976789 /* Resources */,
+				BCD3254A29AA43B30086C721 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BCD3254829AA43B30086C721 /* PBXTargetDependency */,
 			);
 			name = Birthday;
 			packageProductDependencies = (
@@ -184,6 +272,9 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					BCD3253829AA43B00086C721 = {
+						CreatedOnToolsVersion = 14.2;
+					};
 					BCE3BB602997AC6D00976789 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -206,11 +297,20 @@
 			projectRoot = "";
 			targets = (
 				BCE3BB602997AC6D00976789 /* Birthday */,
+				BCD3253829AA43B00086C721 /* BirthdayWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BCD3253729AA43B00086C721 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD3254529AA43B30086C721 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCE3BB5F2997AC6D00976789 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,6 +325,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BCD3253529AA43B00086C721 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD3254329AA43B00086C721 /* BirthdayWidget.swift in Sources */,
+				BCD3254129AA43B00086C721 /* BirthdayWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCE3BB5D2997AC6D00976789 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -246,6 +355,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BCD3254829AA43B30086C721 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCD3253829AA43B00086C721 /* BirthdayWidgetExtension */;
+			targetProxy = BCD3254729AA43B30086C721 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BCED06A82998F46600FB2739 /* Localizable.strings */ = {
@@ -271,6 +388,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BCD3254B29AA43B30086C721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PTJ78SK77V;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BirthdayWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BirthdayWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = stinco.Birthday.BirthdayWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BCD3254C29AA43B30086C721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PTJ78SK77V;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BirthdayWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BirthdayWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = stinco.Birthday.BirthdayWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		BCE3BB6D2997AC7100976789 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -392,6 +563,7 @@
 		BCE3BB702997AC7100976789 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -426,6 +598,7 @@
 		BCE3BB712997AC7100976789 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -460,6 +633,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BCD3254D29AA43B30086C721 /* Build configuration list for PBXNativeTarget "BirthdayWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCD3254B29AA43B30086C721 /* Debug */,
+				BCD3254C29AA43B30086C721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BCE3BB5C2997AC6D00976789 /* Build configuration list for PBXProject "Birthday" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
