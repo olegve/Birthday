@@ -22,7 +22,8 @@ struct BirthdayApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ExampleContentView()
+//            ContentView()
                 .environmentObject(sharedModel)
         }
         .onChange(of: scenePhase){ phase in
