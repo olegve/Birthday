@@ -16,7 +16,7 @@ struct ExampleContentView: View {
         Button(action: {
             let emoji = EmojiProvider.random()
             print("Action.  New emoji is \(emoji.emoji)")
-            save(EmojiProvider.random())
+            save(emoji)
             WidgetCenter.shared.reloadTimelines(ofKind: "MyEmojiWidget")
         }, label: {
             Text("Tap me!")
