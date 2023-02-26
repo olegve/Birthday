@@ -66,6 +66,8 @@
 		BC3D792729A2A9AA00DFAAB6 /* ContactAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAccess.swift; sourceTree = "<group>"; };
 		BC3F91DF299BFFCC00B736BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BC3F91E1299C10E700B736BF /* Months.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Months.swift; sourceTree = "<group>"; };
+		BC6D678E29AB9B4B003CA1A8 /* Birthday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Birthday.entitlements; sourceTree = "<group>"; };
+		BC6D678F29AB9B63003CA1A8 /* BirthdayWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BirthdayWidgetExtension.entitlements; sourceTree = "<group>"; };
 		BCBE9A4429A2035600763F3C /* DataSets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSets.swift; sourceTree = "<group>"; };
 		BCC5F532299A95BA007F3E51 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		BCD3253929AA43B00086C721 /* BirthdayWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BirthdayWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +140,13 @@
 			name = GroupByDays;
 			sourceTree = "<group>";
 		};
+		BC6D678D29AB9B16003CA1A8 /* ExampleApp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExampleApp;
+			sourceTree = "<group>";
+		};
 		BCC5F534299A95D1007F3E51 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +182,8 @@
 		BCE3BB582997AC6D00976789 = {
 			isa = PBXGroup;
 			children = (
+				BC6D678F29AB9B63003CA1A8 /* BirthdayWidgetExtension.entitlements */,
+				BC6D678D29AB9B16003CA1A8 /* ExampleApp */,
 				BCE3BB632997AC6D00976789 /* Birthday */,
 				BCD3253F29AA43B00086C721 /* BirthdayWidget */,
 				BCD3253A29AA43B00086C721 /* Frameworks */,
@@ -192,6 +203,7 @@
 		BCE3BB632997AC6D00976789 /* Birthday */ = {
 			isa = PBXGroup;
 			children = (
+				BC6D678E29AB9B4B003CA1A8 /* Birthday.entitlements */,
 				BC31EA2229A0AA960019A0E0 /* Info.plist */,
 				BCC5F534299A95D1007F3E51 /* Utils */,
 				BCED06AD2998FA4200FB2739 /* InfoPlist.strings */,
@@ -393,6 +405,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BirthdayWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PTJ78SK77V;
@@ -420,6 +433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BirthdayWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PTJ78SK77V;
@@ -567,6 +581,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = Birthday/Birthday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
@@ -602,6 +617,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = Birthday/Birthday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";

@@ -38,7 +38,10 @@ struct BirthdayWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        VStack{
+            Text("Birthday widget")
+            Text(entry.date, style: .time)
+        }
     }
 }
 
