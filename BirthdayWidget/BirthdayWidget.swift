@@ -1,47 +1,80 @@
 import WidgetKit
 import SwiftUI
+import Contacts
 
+typealias WidgetDataEntry = ContactsEntry
+
+fileprivate var timelineCounter = 1
 
 struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date())
+    private let shared = ContactsModel.shared
+    
+    func placeholder(in context: Context) -> WidgetDataEntry {
+        WidgetDataEntry(date: Date(), contacts: dataSet1)
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date())
+    func getSnapshot(in context: Context, completion: @escaping (WidgetDataEntry) -> ()) {
+        let entry = WidgetDataEntry(date: Date(), contacts: dataSet1)
         completion(entry)
     }
 
+    @MainActor
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
+//        var entries: [WidgetDataEntry] = []
 
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+        // Generate a timeline
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate)
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        shared.updateContacts()
+        var contacts = shared.contacts
+            .sorted{ currentDate.days(until: $0.birthday!.date!) < currentDate.days(until: $1.birthday!.date!) }
+        contacts.removeLast( getTailSize(depending: context.family, with: shared.contacts.count) )
+        
+        let nextDay   = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
+        let entryDate = Calendar.current.startOfDay(for: nextDay)
+        let entry = WidgetDataEntry(date: currentDate, contacts: contacts)
+        
+        //  ----------------------------------------------------
+        let timeline = Timeline(entries: [entry], policy: .after(entryDate))
         completion(timeline)
+    }
+    
+    func getTailSize(depending on:  WidgetFamily, with count: Int) -> Int {
+        let minMediumSize = 5
+        let minLargeSize = 10
+        guard (count > minLargeSize) || (on == .systemMedium && count > minMediumSize) else { return 0 }
+        return count - (on == .systemMedium ? minMediumSize : minLargeSize)
     }
 }
 
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
+struct ContactsEntry: TimelineEntry {
+    var date: Date
+    let contacts: [CNContact]
 }
+
 
 
 struct BirthdayWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack{
-            Text("Birthday widget")
-            Text(entry.date, style: .time)
+        VStack(alignment: .leading){
+            Text("Ближайшие дни рождения \(entry.contacts.count)")
+                .bold()
+                .foregroundColor(.accentColor)
+                .padding(.bottom, 1.0)
+            ForEach(entry.contacts){ contact in
+                HStack(){
+                    Text("\(contact.familyName) \(contact.givenName) \(contact.middleName)")
+                        .font(.callout)
+                    Spacer()
+                    Text("\(entry.date.days(until: contact.birthday!.date!))")
+                        .bold()
+                }
+            }
+            Spacer()
         }
+        .padding(.all)
     }
 }
 
@@ -53,15 +86,24 @@ struct BirthdayWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             BirthdayWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
+        .configurationDisplayName("Birthday Widget")
         .description("This is an example widget.")
+        .supportedFamilies([.systemMedium, .systemLarge])
     }
 }
 
 
 struct BirthdayWidget_Previews: PreviewProvider {
+    static let currentDate = Date()
+    
     static var previews: some View {
-        BirthdayWidgetEntryView(entry: SimpleEntry(date: Date()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        BirthdayWidgetEntryView(
+            entry: WidgetDataEntry(
+                date: Date(),
+                contacts: dataSet1
+                    .sorted{ currentDate.days(until: $0.birthday!.date!) < currentDate.days(until: $1.birthday!.date!) }
+            )
+        )
+        .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
