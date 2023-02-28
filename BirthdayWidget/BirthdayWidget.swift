@@ -68,17 +68,18 @@ struct ContactView: View {
     let date: Date
     var days: Int { date.days(until: contact.birthday!.date!) }
     var body: some View {
-        HStack(){
+        HStack{
             Text("\(contact.familyName) \(contact.givenName) \(contact.middleName)")
                 .font(.callout)
                 .lineLimit(1)
-                .foregroundColor(days == 0 ? .red : .primary)
             Spacer()
             Text("\(days)")
                 .bold()
         }
+        .foregroundColor(days == 0 ? .red : .primary)
     }
 }
+
 
 
 struct BirthdayWidgetEntryView : View {
