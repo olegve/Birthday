@@ -9,7 +9,7 @@ struct ToggleView: View {
     
     var body: some View {
         if isSearching { SearchHeaderView() }
-        else { Toggle(isOn: $isOn){ TogglePromptView() } }
+        else { Toggle(isOn: $isOn){TogglePromptView()} }
     }
 }
 

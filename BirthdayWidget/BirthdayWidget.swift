@@ -10,11 +10,11 @@ struct Provider: TimelineProvider {
     private let shared = ContactsModel.shared
     
     func placeholder(in context: Context) -> WidgetDataEntry {
-        WidgetDataEntry(date: Date(), contacts: dataSet1)
+        WidgetDataEntry(date: Date(), contacts: dataSet1, nextDate: Date())
     }
 
     func getSnapshot(in context: Context, completion: @escaping (WidgetDataEntry) -> ()) {
-        let entry = WidgetDataEntry(date: Date(), contacts: dataSet1)
+        let entry = WidgetDataEntry(date: Date(), contacts: dataSet1, nextDate: Date())
         completion(entry)
     }
 
@@ -31,7 +31,7 @@ struct Provider: TimelineProvider {
         
         let nextDay   = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
         let entryDate = Calendar.current.startOfDay(for: nextDay)
-        let entry = WidgetDataEntry(date: currentDate, contacts: contacts)
+        let entry = WidgetDataEntry(date: currentDate, contacts: contacts, nextDate: entryDate)
         
         //  ----------------------------------------------------
         let timeline = Timeline(entries: [entry], policy: .after(entryDate))
@@ -50,15 +50,26 @@ struct Provider: TimelineProvider {
 struct ContactsEntry: TimelineEntry {
     var date: Date
     let contacts: [CNContact]
+    let nextDate: Date
 }
 
 
 struct HeaderView: View {
+    let nextUpdateDate: Date
+    @Environment(\.widgetFamily) var family
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        formatter.locale = .autoupdatingCurrent
+        return formatter
+    }()
+    
     var body: some View {
-        Text("Ближайшие дни рождения")
+        Text("Обновление \(nextUpdateDate, formatter: Self.dateFormatter)")
             .bold()
             .foregroundColor(.accentColor)
-            .padding(.bottom, 1.0)
+            .padding(.bottom, family == .systemMedium ? 0 : 0.5)
     }
 }
 
@@ -77,6 +88,7 @@ struct ContactView: View {
                 .bold()
         }
         .foregroundColor(days == 0 ? .red : .primary)
+        
     }
 }
 
@@ -87,10 +99,11 @@ struct BirthdayWidgetEntryView : View {
     
     var body: some View {
         VStack(alignment: .leading){
-            HeaderView()
+            HeaderView(nextUpdateDate: entry.nextDate)
             ForEach(entry.contacts){ ContactView(contact: $0, date: entry.date) }
             Spacer()
         }
+        .fontDesign(.rounded)
         .padding(.all)
     }
 }
@@ -116,12 +129,27 @@ struct BirthdayWidget_Previews: PreviewProvider {
     static var previews: some View {
         BirthdayWidgetEntryView(
             entry: WidgetDataEntry(
-                date: Date(),
+                date: currentDate,
                 contacts: dataSet1
-                    .sorted{ currentDate.days(until: $0.birthday!.date!) < currentDate.days(until: $1.birthday!.date!) }
+                    .sorted{ currentDate.days(until: $0.birthday!.date!) < currentDate.days(until: $1.birthday!.date!) },
+                nextDate: currentDate
             )
         )
         .previewContext(WidgetPreviewContext(family: .systemLarge))
+        
+        
+        BirthdayWidgetEntryView(
+            entry: WidgetDataEntry(
+                date: currentDate,
+                contacts: dataSet1
+                    .sorted{ currentDate.days(until: $0.birthday!.date!) < currentDate.days(until: $1.birthday!.date!) },
+                nextDate: currentDate
+            )
+        )
+        .previewContext(WidgetPreviewContext(family: .systemMedium))
+
+        
+        
     }
 }
 
