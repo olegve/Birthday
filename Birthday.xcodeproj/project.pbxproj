@@ -17,6 +17,12 @@
 		BC3D792829A2A9AA00DFAAB6 /* ContactAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3D792729A2A9AA00DFAAB6 /* ContactAccess.swift */; };
 		BC3F91E0299BFFCC00B736BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91DF299BFFCC00B736BF /* ContentView.swift */; };
 		BC3F91E2299C10E700B736BF /* Months.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91E1299C10E700B736BF /* Months.swift */; };
+		BC84203F29AE7CD700AECD6A /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC5F532299A95BA007F3E51 /* DateExtension.swift */; };
+		BC84204029AE7CDB00AECD6A /* Months.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91E1299C10E700B736BF /* Months.swift */; };
+		BC84204129AE7CDF00AECD6A /* LocalizedStringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21E21C29A101B100835DF5 /* LocalizedStringKey.swift */; };
+		BC84204229AE7CE200AECD6A /* DataSets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBE9A4429A2035600763F3C /* DataSets.swift */; };
+		BC84204329AE7CE600AECD6A /* ContactAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3D792729A2A9AA00DFAAB6 /* ContactAccess.swift */; };
+		BC84204429AE7CF100AECD6A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE3BB722997B07100976789 /* Model.swift */; };
 		BCBE9A4529A2035600763F3C /* DataSets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBE9A4429A2035600763F3C /* DataSets.swift */; };
 		BCC5F533299A95BA007F3E51 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC5F532299A95BA007F3E51 /* DateExtension.swift */; };
 		BCD3253C29AA43B00086C721 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD3253B29AA43B00086C721 /* WidgetKit.framework */; };
@@ -115,6 +121,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC0E13ED29AD071100697585 /* ExampleWidget */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExampleWidget;
+			sourceTree = "<group>";
+		};
 		BC21E21629A0E4D900835DF5 /* GroupByMonthViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,9 +203,9 @@
 			children = (
 				BC6D678F29AB9B63003CA1A8 /* BirthdayWidgetExtension.entitlements */,
 				BC6D678D29AB9B16003CA1A8 /* ExampleApp */,
+				BC0E13ED29AD071100697585 /* ExampleWidget */,
 				BCE3BB632997AC6D00976789 /* Birthday */,
 				BCD3253F29AA43B00086C721 /* BirthdayWidget */,
-				BC6D678C29AB9AE6003CA1A8 /* ExampleWidget */,
 				BCD3253A29AA43B00086C721 /* Frameworks */,
 				BCE3BB622997AC6D00976789 /* Products */,
 			);
@@ -348,8 +361,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC84204029AE7CDB00AECD6A /* Months.swift in Sources */,
 				BCD3254329AA43B00086C721 /* BirthdayWidget.swift in Sources */,
+				BC84203F29AE7CD700AECD6A /* DateExtension.swift in Sources */,
 				BCD3254129AA43B00086C721 /* BirthdayWidgetBundle.swift in Sources */,
+				BC84204229AE7CE200AECD6A /* DataSets.swift in Sources */,
+				BC84204129AE7CDF00AECD6A /* LocalizedStringKey.swift in Sources */,
+				BC84204329AE7CE600AECD6A /* ContactAccess.swift in Sources */,
+				BC84204429AE7CF100AECD6A /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

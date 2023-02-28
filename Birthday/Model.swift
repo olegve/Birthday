@@ -43,13 +43,7 @@ final class ContactsModel: ObservableObject {
 
     func updateSync() -> Void {
         updateTodayDate()
-        do {
-            contacts = try getPersons()
-        } catch {
-            print("Контакты не загружаются, contacts = []")
-            contacts = []
-            Self.logger.critical("Контакты не загружаются, contacts = []")
-        }
+        updateContacts()
     }
 
     
@@ -76,5 +70,15 @@ final class ContactsModel: ObservableObject {
             ]
         )
         return contacts.filter{ $0.birthday != nil }
+    }
+    
+    func updateContacts(){
+        do {
+            contacts = try getPersons()
+        } catch {
+            print("Контакты не загружаются, contacts = []")
+            contacts = []
+            Self.logger.critical("Контакты не загружаются, contacts = []")
+        }
     }
 }
