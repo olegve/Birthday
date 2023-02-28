@@ -81,6 +81,7 @@ struct ContactView: View {
 }
 
 
+
 struct BirthdayWidgetEntryView : View {
     var entry: Provider.Entry
     
