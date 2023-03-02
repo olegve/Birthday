@@ -1,7 +1,7 @@
 import SwiftUI
 import Contacts
 import Combine
-
+import WidgetKit
 
 struct ToggleView: View {
     @Binding var isOn: Bool
@@ -69,10 +69,12 @@ struct ContentView: View {
         .onReceive(NotificationCenter.default.publisher(for: .CNContactStoreDidChange)){ _ in
             // В Контактах произошли изменения
             shared.updateSync()
+            WidgetCenter.shared.reloadTimelines(ofKind: "BirthdayWidget")
         }
         .onReceive(timer){ newDate in
             guard newDate.day != shared.now.day else { return }
             shared.updateTodayDate()
+            WidgetCenter.shared.reloadTimelines(ofKind: "BirthdayWidget")
             }
     }
 }

@@ -47,18 +47,12 @@ struct ContactFullNameView: View {
         formatter.locale = .autoupdatingCurrent
         return formatter
     }()
-    static let contactFormatter: CNContactFormatter = {
-        let formatter = CNContactFormatter()
-        formatter.style = .fullName
-        return formatter
-    }()
 
     var body: some View {
         VStack(alignment: .leading){
-            Text("\(contact, formatter: Self.contactFormatter)")
+            ContactNameView(contact: contact)
                 .fontWeight(.semibold)
                 .font(.title3)
-                .lineLimit(1)
                 .dynamicTypeSize(..<DynamicTypeSize.xxLarge) // <- RANGE
             HStack{
                 Text("\(contact.birthday!.date!, formatter: Self.dateFormatter)")

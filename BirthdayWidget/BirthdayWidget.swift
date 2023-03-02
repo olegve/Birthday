@@ -78,9 +78,10 @@ struct ContactView: View {
     let contact: CNContact
     let date: Date
     var days: Int { date.days(until: contact.birthday!.date!) }
+    
     var body: some View {
         HStack{
-            Text("\(contact.familyName) \(contact.givenName) \(contact.middleName)")
+            ContactNameView(contact: contact)
                 .font(.callout)
                 .lineLimit(1)
             Spacer()
@@ -88,23 +89,52 @@ struct ContactView: View {
                 .bold()
         }
         .foregroundColor(days == 0 ? .red : .primary)
-        
     }
 }
 
 
-
 struct BirthdayWidgetEntryView : View {
     var entry: Provider.Entry
+    @Environment(\.widgetFamily) var family
     
+    @ViewBuilder
     var body: some View {
-        VStack(alignment: .leading){
-            HeaderView(nextUpdateDate: entry.nextDate)
-            ForEach(entry.contacts){ ContactView(contact: $0, date: entry.date) }
-            Spacer()
+        switch family {
+        case .accessoryRectangular:
+            // Code to construct the view for the rectangular Lock Screen widget or watch complication.
+            ZStack{
+                AccessoryWidgetBackground()
+                    .cornerRadius(8)
+                VStack{
+                    ForEach(0...2, id: \.self){ ContactView(contact: entry.contacts[$0], date: entry.date) }
+                }
+                .padding(.horizontal, 5)
+            }
+        case .systemSmall:
+            // Code to construct the view for the small widget.
+            VStack(alignment: .leading){
+                HeaderView(nextUpdateDate: entry.nextDate)
+                ForEach(entry.contacts){ ContactView(contact: $0, date: entry.date) }
+                Spacer()
+            }
+            .fontDesign(.rounded)
+            .padding(.all)
+        case .systemMedium:
+            // Code to construct the view for the medium widget.
+            VStack(alignment: .leading){
+                HeaderView(nextUpdateDate: entry.nextDate)
+                ForEach(entry.contacts){ ContactView(contact: $0, date: entry.date) }
+                Spacer()
+            }
+            .fontDesign(.rounded)
+            .padding(.all)
+        default:
+            // Code to construct the view for other widgets; for example, the system medium or large widgets.
+            Text("Unused Widget")
         }
-        .fontDesign(.rounded)
-        .padding(.all)
+        
+        
+        
     }
 }
 
@@ -118,7 +148,7 @@ struct BirthdayWidget: Widget {
         }
         .configurationDisplayName("Birthday Widget")
         .description("This is an example widget.")
-        .supportedFamilies([.systemMedium, .systemLarge])
+        .supportedFamilies([.systemMedium, .systemLarge, .accessoryRectangular])
     }
 }
 
@@ -149,7 +179,16 @@ struct BirthdayWidget_Previews: PreviewProvider {
         .previewContext(WidgetPreviewContext(family: .systemMedium))
 
         
-        
+        BirthdayWidgetEntryView(
+            entry: WidgetDataEntry(
+                date: currentDate,
+                contacts: dataSet1
+                    .sorted{ currentDate.days(until: $0.birthday!.date!) < currentDate.days(until: $1.birthday!.date!) },
+                nextDate: currentDate
+            )
+        )
+        .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+
     }
 }
 

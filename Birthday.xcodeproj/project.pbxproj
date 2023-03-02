@@ -11,8 +11,6 @@
 		BC21E21B29A0E9BA00835DF5 /* GroupByMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21E21A29A0E9BA00835DF5 /* GroupByMonthView.swift */; };
 		BC21E21D29A101B100835DF5 /* LocalizedStringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21E21C29A101B100835DF5 /* LocalizedStringKey.swift */; };
 		BC21E22029A1041400835DF5 /* GroupByDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21E21F29A1041400835DF5 /* GroupByDaysView.swift */; };
-		BC3205F629ABADB700F11C46 /* EmojiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3205F429ABADB700F11C46 /* EmojiProvider.swift */; };
-		BC3205F729ABADB700F11C46 /* ExapleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3205F529ABADB700F11C46 /* ExapleContentView.swift */; };
 		BC3D792629A2A69400DFAAB6 /* ContactDetaledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3D792529A2A69400DFAAB6 /* ContactDetaledView.swift */; };
 		BC3D792829A2A9AA00DFAAB6 /* ContactAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3D792729A2A9AA00DFAAB6 /* ContactAccess.swift */; };
 		BC3F91E0299BFFCC00B736BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91DF299BFFCC00B736BF /* ContentView.swift */; };
@@ -31,6 +29,8 @@
 		BCD3254329AA43B00086C721 /* BirthdayWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3254229AA43B00086C721 /* BirthdayWidget.swift */; };
 		BCD3254529AA43B30086C721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD3254429AA43B30086C721 /* Assets.xcassets */; };
 		BCD3254929AA43B30086C721 /* BirthdayWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BCD3253929AA43B00086C721 /* BirthdayWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BCDF545F29B2FD1400F0E718 /* ContactNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDF545E29B2FD1400F0E718 /* ContactNameView.swift */; };
+		BCDF546029B2FD1400F0E718 /* ContactNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDF545E29B2FD1400F0E718 /* ContactNameView.swift */; };
 		BCE3BB652997AC6D00976789 /* BirthdayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE3BB642997AC6D00976789 /* BirthdayApp.swift */; };
 		BCE3BB692997AC7100976789 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCE3BB682997AC7100976789 /* Assets.xcassets */; };
 		BCE3BB6C2997AC7100976789 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCE3BB6B2997AC7100976789 /* Preview Assets.xcassets */; };
@@ -70,8 +70,6 @@
 		BC21E21C29A101B100835DF5 /* LocalizedStringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringKey.swift; sourceTree = "<group>"; };
 		BC21E21F29A1041400835DF5 /* GroupByDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupByDaysView.swift; sourceTree = "<group>"; };
 		BC31EA2229A0AA960019A0E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		BC3205F429ABADB700F11C46 /* EmojiProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiProvider.swift; sourceTree = "<group>"; };
-		BC3205F529ABADB700F11C46 /* ExapleContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExapleContentView.swift; sourceTree = "<group>"; };
 		BC3D792529A2A69400DFAAB6 /* ContactDetaledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetaledView.swift; sourceTree = "<group>"; };
 		BC3D792729A2A9AA00DFAAB6 /* ContactAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAccess.swift; sourceTree = "<group>"; };
 		BC3F91DF299BFFCC00B736BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,6 +85,7 @@
 		BCD3254229AA43B00086C721 /* BirthdayWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayWidget.swift; sourceTree = "<group>"; };
 		BCD3254429AA43B30086C721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCD3254629AA43B30086C721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCDF545E29B2FD1400F0E718 /* ContactNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNameView.swift; sourceTree = "<group>"; };
 		BCE3BB612997AC6D00976789 /* Birthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE3BB642997AC6D00976789 /* BirthdayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayApp.swift; sourceTree = "<group>"; };
 		BCE3BB682997AC7100976789 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,13 +120,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BC0E13ED29AD071100697585 /* ExampleWidget */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ExampleWidget;
-			sourceTree = "<group>";
-		};
 		BC21E21629A0E4D900835DF5 /* GroupByMonthViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				BC3F91DF299BFFCC00B736BF /* ContentView.swift */,
+				BCDF545E29B2FD1400F0E718 /* ContactNameView.swift */,
 				BC21E21629A0E4D900835DF5 /* GroupByMonthViews */,
 				BC21E21E29A103D300835DF5 /* GroupByDays */,
 				BCED06B22998FF5700FB2739 /* CellView.swift */,
@@ -155,15 +148,6 @@
 				BC21E21F29A1041400835DF5 /* GroupByDaysView.swift */,
 			);
 			name = GroupByDays;
-			sourceTree = "<group>";
-		};
-		BC6D678D29AB9B16003CA1A8 /* ExampleApp */ = {
-			isa = PBXGroup;
-			children = (
-				BC3205F429ABADB700F11C46 /* EmojiProvider.swift */,
-				BC3205F529ABADB700F11C46 /* ExapleContentView.swift */,
-			);
-			path = ExampleApp;
 			sourceTree = "<group>";
 		};
 		BCC5F534299A95D1007F3E51 /* Utils */ = {
@@ -202,8 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				BC6D678F29AB9B63003CA1A8 /* BirthdayWidgetExtension.entitlements */,
-				BC6D678D29AB9B16003CA1A8 /* ExampleApp */,
-				BC0E13ED29AD071100697585 /* ExampleWidget */,
 				BCE3BB632997AC6D00976789 /* Birthday */,
 				BCD3253F29AA43B00086C721 /* BirthdayWidget */,
 				BCD3253A29AA43B00086C721 /* Frameworks */,
@@ -363,6 +345,7 @@
 			files = (
 				BC84204029AE7CDB00AECD6A /* Months.swift in Sources */,
 				BCD3254329AA43B00086C721 /* BirthdayWidget.swift in Sources */,
+				BCDF546029B2FD1400F0E718 /* ContactNameView.swift in Sources */,
 				BC84203F29AE7CD700AECD6A /* DateExtension.swift in Sources */,
 				BCD3254129AA43B00086C721 /* BirthdayWidgetBundle.swift in Sources */,
 				BC84204229AE7CE200AECD6A /* DataSets.swift in Sources */,
@@ -376,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCDF545F29B2FD1400F0E718 /* ContactNameView.swift in Sources */,
 				BC21E22029A1041400835DF5 /* GroupByDaysView.swift in Sources */,
 				BCBE9A4529A2035600763F3C /* DataSets.swift in Sources */,
 				BCE3BB732997B07100976789 /* Model.swift in Sources */,
@@ -384,13 +368,11 @@
 				BC3D792629A2A69400DFAAB6 /* ContactDetaledView.swift in Sources */,
 				BC21E21D29A101B100835DF5 /* LocalizedStringKey.swift in Sources */,
 				BC3F91E0299BFFCC00B736BF /* ContentView.swift in Sources */,
-				BC3205F729ABADB700F11C46 /* ExapleContentView.swift in Sources */,
 				BC21E21929A0E5B600835DF5 /* SectionView.swift in Sources */,
 				BC21E21B29A0E9BA00835DF5 /* GroupByMonthView.swift in Sources */,
 				BC3F91E2299C10E700B736BF /* Months.swift in Sources */,
 				BCE3BB652997AC6D00976789 /* BirthdayApp.swift in Sources */,
 				BC3D792829A2A9AA00DFAAB6 /* ContactAccess.swift in Sources */,
-				BC3205F629ABADB700F11C46 /* EmojiProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
