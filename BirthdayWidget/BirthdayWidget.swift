@@ -91,7 +91,7 @@ struct ContactView: View {
             Text("\(days)")
                 .bold()
         }
-        .foregroundColor(days == 0 ? .red : .primary)
+        .foregroundColor(days == 0 ? .red : days < 8 ? .green : .primary)
     }
 }
 
@@ -117,7 +117,6 @@ struct BirthdayWidgetEntryView : View {
             // Code to construct the view for the large widget.
             VStack(alignment: .leading){
                 HeaderView(nextUpdateDate: entry.nextDate)
-                    .padding(.bottom, 1)
                 ForEach(entry.contacts){ ContactView(contact: $0, date: entry.date) }
                 Spacer()
             }
@@ -127,7 +126,6 @@ struct BirthdayWidgetEntryView : View {
             // Code to construct the view for the medium widget.
             VStack(alignment: .leading){
                 HeaderView(nextUpdateDate: entry.nextDate)
-                    .padding(.bottom, 0.5)
                 ForEach(entry.contacts){ ContactView(contact: $0, date: entry.date) }
                 Spacer()
             }
