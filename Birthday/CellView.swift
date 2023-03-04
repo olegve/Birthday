@@ -38,7 +38,7 @@ struct ThumbnailView: View {
 }
 
 
-struct AppleSymbolsFontModifier: ViewModifier {
+struct SymbolsFontModifier: ViewModifier {
     var style: UIFont.TextStyle = .body
     var weight: Font.Weight = .regular
     
@@ -52,7 +52,7 @@ struct AppleSymbolsFontModifier: ViewModifier {
 
 extension View {
     func symbolsFont(style: UIFont.TextStyle, weight: Font.Weight) -> some View {
-        self.modifier(AppleSymbolsFontModifier(style: style, weight: weight))
+        self.modifier(SymbolsFontModifier(style: style, weight: weight))
     }
 }
 
@@ -74,9 +74,9 @@ struct ContactFullNameView: View {
                 .font(.title3)
                 .dynamicTypeSize(..<DynamicTypeSize.xxLarge) // <- RANGE
             HStack{
-                Text("\(contact.birthday!.date!, formatter: Self.dateFormatter)")
                 Text("\(contact.birthday!.date!.zodiac.description)")
                     .symbolsFont(style: .callout, weight: .light)
+                Text("\(contact.birthday!.date!, formatter: Self.dateFormatter)")
                     .padding(.horizontal, 5)
 //                Text("25 лет")
             }
