@@ -91,7 +91,7 @@ struct ContactView: View {
             Text("\(days)")
                 .bold()
         }
-        .foregroundColor(days == 0 ? .red : days < 8 ? .green : .primary)
+        .foregroundColor(days == 0 ? .red : .primary)
     }
 }
 

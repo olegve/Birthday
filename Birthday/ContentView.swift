@@ -6,10 +6,19 @@ import WidgetKit
 struct ToggleView: View {
     @Binding var isOn: Bool
     @Environment(\.isSearching) private var isSearching
+    let transition = AnyTransition
+        .asymmetric(insertion: .slide, removal: .scale)
+        .combined(with: .opacity)
     
     var body: some View {
-        if isSearching { SearchHeaderView() }
-        else { Toggle(isOn: $isOn){TogglePromptView()} }
+        HStack{
+            if isSearching {
+                SearchHeaderView().transition(transition)
+            } else {
+                Toggle(isOn: $isOn){ TogglePromptView() }.transition(transition)
+            }
+        }
+        .animation(.default.speed(1), value: isSearching)
     }
 }
 
