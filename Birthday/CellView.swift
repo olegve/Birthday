@@ -38,6 +38,25 @@ struct ThumbnailView: View {
 }
 
 
+struct AppleSymbolsFontModifier: ViewModifier {
+    var style: UIFont.TextStyle = .body
+    var weight: Font.Weight = .regular
+    
+    func body(content: Content) -> some View {
+        content
+            .font(Font.custom("Apple Symbols", size: UIFont.preferredFont(forTextStyle: style).pointSize)
+            .weight(weight))
+    }
+}
+
+
+extension View {
+    func symbolsFont(style: UIFont.TextStyle, weight: Font.Weight) -> some View {
+        self.modifier(AppleSymbolsFontModifier(style: style, weight: weight))
+    }
+}
+
+
 struct ContactFullNameView: View {
     var contact: CNContact
     static let dateFormatter: DateFormatter = {
@@ -56,9 +75,10 @@ struct ContactFullNameView: View {
                 .dynamicTypeSize(..<DynamicTypeSize.xxLarge) // <- RANGE
             HStack{
                 Text("\(contact.birthday!.date!, formatter: Self.dateFormatter)")
-                    .padding(.trailing)
-//                Text("58 лет,")
-//                Text("Водолей")
+                Text("\(contact.birthday!.date!.zodiac.description)")
+                    .symbolsFont(style: .callout, weight: .light)
+                    .padding(.horizontal, 5)
+//                Text("25 лет")
             }
             .fontWeight(.light)
             .font(.callout)
