@@ -75,7 +75,10 @@ struct ContentView: View {
             guard newDate.day != shared.now.day else { return }
             shared.updateTodayDate()
             WidgetCenter.shared.reloadTimelines(ofKind: "BirthdayWidget")
-            }
+        }
+        .onAppear(){
+            WidgetCenter.shared.reloadTimelines(ofKind: "BirthdayWidget")
+        }
     }
 }
 
