@@ -56,7 +56,7 @@ struct ContactsEntry: TimelineEntry {
 
 struct HeaderView: View {
     let nextUpdateDate: Date
-    @Environment(\.widgetFamily) var family
+//    @Environment(\.widgetFamily) var family
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
@@ -66,10 +66,13 @@ struct HeaderView: View {
     }()
     
     var body: some View {
-        Text("Обновление \(nextUpdateDate, formatter: Self.dateFormatter)")
-            .bold()
+//        Text("Обновление \(nextUpdateDate, formatter: Self.dateFormatter)")
+        Text("Ближайшие дни рождения")
+            .multilineTextAlignment(.leading)
+            .lineLimit(1)
+            .font(.headline)
             .foregroundColor(.accentColor)
-            .padding(.bottom, family == .systemMedium ? 0 : 0.5)
+//            .padding(.bottom, family == .systemMedium ? 0 : 0.5)
     }
 }
 
@@ -110,10 +113,11 @@ struct BirthdayWidgetEntryView : View {
                 }
                 .padding(.horizontal, 5)
             }
-        case .systemSmall:
-            // Code to construct the view for the small widget.
+        case .systemLarge:
+            // Code to construct the view for the large widget.
             VStack(alignment: .leading){
                 HeaderView(nextUpdateDate: entry.nextDate)
+                    .padding(.bottom, 1)
                 ForEach(entry.contacts){ ContactView(contact: $0, date: entry.date) }
                 Spacer()
             }
@@ -123,6 +127,7 @@ struct BirthdayWidgetEntryView : View {
             // Code to construct the view for the medium widget.
             VStack(alignment: .leading){
                 HeaderView(nextUpdateDate: entry.nextDate)
+                    .padding(.bottom, 0.5)
                 ForEach(entry.contacts){ ContactView(contact: $0, date: entry.date) }
                 Spacer()
             }
@@ -132,9 +137,6 @@ struct BirthdayWidgetEntryView : View {
             // Code to construct the view for other widgets; for example, the system medium or large widgets.
             Text("Unused Widget")
         }
-        
-        
-        
     }
 }
 

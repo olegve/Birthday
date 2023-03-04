@@ -73,10 +73,11 @@ struct ContentView: View {
         }
         .onReceive(timer){ newDate in
             guard newDate.day != shared.now.day else { return }
+            // Наступили новые сутки
             shared.updateTodayDate()
-            WidgetCenter.shared.reloadTimelines(ofKind: "BirthdayWidget")
         }
         .onAppear(){
+            // Просто обновляем виджет на всякий случай
             WidgetCenter.shared.reloadTimelines(ofKind: "BirthdayWidget")
         }
     }
