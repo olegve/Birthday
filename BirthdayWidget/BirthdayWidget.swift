@@ -82,8 +82,6 @@ struct ContactView: View {
                 .fontWeight(.bold)
         }
         .foregroundColor(days == 0 ? .red : .primary)
-        .frame(height: 19)
-        .padding(.horizontal, 4)
     }
 }
 
@@ -112,6 +110,8 @@ struct BirthdayWidgetEntryView : View {
                 VStack{
                     ForEach(0..<(entry.contacts.count > 8 ? 8 : entry.contacts.count), id: \.self){
                         ContactView(contact: entry.contacts[$0], date: entry.date)
+                            .frame(height: 19)
+                            .padding(.horizontal, 4)
                         Divider()
                     }
                 }
@@ -128,6 +128,8 @@ struct BirthdayWidgetEntryView : View {
                 VStack{
                     ForEach(0..<(entry.contacts.count > 3 ? 3 : entry.contacts.count), id: \.self){
                         ContactView(contact: entry.contacts[$0], date: entry.date)
+                            .frame(height: 19)
+                            .padding(.horizontal, 4)
                         Divider()
                     }
                 }
