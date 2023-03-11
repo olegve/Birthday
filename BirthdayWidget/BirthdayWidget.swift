@@ -55,24 +55,15 @@ struct ContactsEntry: TimelineEntry {
 
 
 struct HeaderView: View {
-    let nextUpdateDate: Date
-//    @Environment(\.widgetFamily) var family
-    static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .short
-        formatter.locale = .autoupdatingCurrent
-        return formatter
-    }()
-    
     var body: some View {
-//        Text("Обновление \(nextUpdateDate, formatter: Self.dateFormatter)")
         Text("Ближайшие дни рождения")
-            .multilineTextAlignment(.leading)
             .lineLimit(1)
             .font(.headline)
-            .foregroundColor(.accentColor)
-//            .padding(.bottom, family == .systemMedium ? 0 : 0.5)
+            .fontWeight(.bold)
+            .foregroundColor(Color(hue: 0.715, saturation: 1.0, brightness: 0.98))
+            .padding(.vertical, 8)
+            .frame(maxWidth: .infinity)
+            .background(.yellow.gradient)
     }
 }
 
@@ -85,13 +76,14 @@ struct ContactView: View {
     var body: some View {
         HStack{
             ContactNameView(contact: contact)
-                .font(.callout)
                 .lineLimit(1)
             Spacer()
             Text("\(days)")
-                .bold()
+                .fontWeight(.bold)
         }
         .foregroundColor(days == 0 ? .red : .primary)
+        .frame(height: 19)
+        .padding(.horizontal, 4)
     }
 }
 
@@ -116,21 +108,34 @@ struct BirthdayWidgetEntryView : View {
         case .systemLarge:
             // Code to construct the view for the large widget.
             VStack(alignment: .leading){
-                HeaderView(nextUpdateDate: entry.nextDate)
-                ForEach(entry.contacts){ ContactView(contact: $0, date: entry.date) }
+                HeaderView()
+                VStack{
+                    ForEach(0..<(entry.contacts.count > 8 ? 8 : entry.contacts.count), id: \.self){
+                        ContactView(contact: entry.contacts[$0], date: entry.date)
+                        Divider()
+                    }
+                }
+                .padding([.leading, .bottom, .trailing], 10)
                 Spacer()
             }
+            .font(.callout)
             .fontDesign(.rounded)
-            .padding(.all)
+            //.padding(.all)
         case .systemMedium:
             // Code to construct the view for the medium widget.
             VStack(alignment: .leading){
-                HeaderView(nextUpdateDate: entry.nextDate)
-                ForEach(entry.contacts){ ContactView(contact: $0, date: entry.date) }
+                HeaderView()
+                VStack{
+                    ForEach(0..<(entry.contacts.count > 3 ? 3 : entry.contacts.count), id: \.self){
+                        ContactView(contact: entry.contacts[$0], date: entry.date)
+                        Divider()
+                    }
+                }
+                .padding([.leading, .bottom, .trailing], 10)
                 Spacer()
             }
+            .font(.callout)
             .fontDesign(.rounded)
-            .padding(.all)
         default:
             // Code to construct the view for other widgets; for example, the system medium or large widgets.
             Text("Unused Widget")
