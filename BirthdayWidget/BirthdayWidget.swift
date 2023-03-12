@@ -6,6 +6,21 @@ typealias WidgetDataEntry = ContactsEntry
 
 fileprivate var timelineCounter = 1
 
+// Темы оформления заголовка виджета
+func color(hex: Int) -> Double { Double(hex) / Double(0xFF) }
+
+struct DarkTheme {
+    static let background = Color(red: color(hex: 0x3B), green: color(hex: 0x86), blue: color(hex: 0x86))
+    static let foreground = Color(red: color(hex: 0xE6), green: color(hex: 0xFE), blue: color(hex: 0xF0))
+}
+
+
+struct LightTheme {
+    static let background = Color(red: color(hex: 0x54), green: color(hex: 0xA4), blue: color(hex: 0xA4))
+    static let foreground = Color(red: color(hex: 0x24), green: color(hex: 0x4B), blue: color(hex: 0x4B))
+}
+
+
 struct Provider: TimelineProvider {
     private let shared = ContactsModel.shared
     
@@ -55,15 +70,17 @@ struct ContactsEntry: TimelineEntry {
 
 
 struct HeaderView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         Text("Ближайшие дни рождения")
             .lineLimit(1)
             .font(.headline)
             .fontWeight(.bold)
-            .foregroundColor(Color(hue: 0.715, saturation: 1.0, brightness: 0.98))
+            .foregroundColor(colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground)
             .padding(.vertical, 8)
             .frame(maxWidth: .infinity)
-            .background(.yellow.gradient)
+            .background((colorScheme == .light ? LightTheme.background : DarkTheme.background).gradient)
     }
 }
 
@@ -96,8 +113,8 @@ struct BirthdayWidgetEntryView : View {
         case .accessoryRectangular:
             // Code to construct the view for the rectangular Lock Screen widget or watch complication.
             ZStack{
-                AccessoryWidgetBackground()
-                    .cornerRadius(8)
+//                AccessoryWidgetBackground()
+//                    .cornerRadius(8)
                 VStack{
                     ForEach(0...2, id: \.self){ ContactView(contact: entry.contacts[$0], date: entry.date) }
                 }
