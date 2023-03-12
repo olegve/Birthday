@@ -12,8 +12,7 @@ struct ContactDetaledView: UIViewControllerRepresentable {
         if !contact.areKeysAvailable([CNContactViewController.descriptorForRequiredKeys()]) {
             do {
                 localContact = try shared.contactStore.unifiedContact(withIdentifier: contact.identifier, keysToFetch: [CNContactViewController.descriptorForRequiredKeys()])
-            }
-            catch {
+            } catch {
                 ///TODO:
                 ///
             }
@@ -27,6 +26,7 @@ struct ContactDetaledView: UIViewControllerRepresentable {
         
     }
 }
+
 
 struct ContactDetaledView_Previews: PreviewProvider {
     static var previews: some View {

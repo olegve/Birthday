@@ -125,11 +125,13 @@ struct BirthdayWidgetEntryView : View {
             VStack(alignment: .leading){
                 HeaderView()
                 VStack{
-                    ForEach(0..<(entry.contacts.count > 8 ? 8 : entry.contacts.count), id: \.self){
-                        ContactView(contact: entry.contacts[$0], date: entry.date)
-                            .frame(height: 19)
-                            .padding(.horizontal, 4)
-                        Divider()
+                    ForEach(0..<(entry.contacts.count > 8 ? 8 : entry.contacts.count), id: \.self){ index in
+                        Link(destination: URL(string: "widget-deeplink-contact://\(entry.contacts[index].identifier)")!){
+                            ContactView(contact: entry.contacts[index], date: entry.date)
+                                .frame(height: 19)
+                                .padding(.horizontal, 4)
+                            Divider()
+                        }
                     }
                 }
                 .padding([.leading, .bottom, .trailing], 10)
@@ -143,11 +145,13 @@ struct BirthdayWidgetEntryView : View {
             VStack(alignment: .leading){
                 HeaderView()
                 VStack{
-                    ForEach(0..<(entry.contacts.count > 3 ? 3 : entry.contacts.count), id: \.self){
-                        ContactView(contact: entry.contacts[$0], date: entry.date)
-                            .frame(height: 19)
-                            .padding(.horizontal, 4)
-                        Divider()
+                    ForEach(0..<(entry.contacts.count > 3 ? 3 : entry.contacts.count), id: \.self){ index in
+                        Link(destination: URL(string: "widget-deeplink-contact://\(entry.contacts[index].identifier)")!) {
+                            ContactView(contact: entry.contacts[index], date: entry.date)
+                                .frame(height: 19)
+                                .padding(.horizontal, 4)
+                            Divider()
+                        }
                     }
                 }
                 .padding([.leading, .bottom, .trailing], 10)

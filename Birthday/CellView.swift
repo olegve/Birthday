@@ -117,7 +117,6 @@ struct CellView: View {
     @State var isBirthdayToday = false
     @State var color = Color.primary
 
-    
     var body: some View {
         GeometryReader{ geometry in
             HStack(alignment: .center){

@@ -9,8 +9,7 @@ struct BirthdayApp: App {
     @StateObject private var sharedModel = ContactsModel.shared
     @Environment(\.isPreview) var isPreview
     @Environment(\.scenePhase) private var scenePhase
-    
-    
+        
     init() {
         let _ = tryAccessToContact(store: ContactsModel.shared.contactStore)
     
@@ -22,9 +21,15 @@ struct BirthdayApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            ExampleContentView()
             ContentView()
                 .environmentObject(sharedModel)
+                .onOpenURL{ url in
+                    guard url.scheme == "widget-deeplink-contact" else { return }
+                    let trimCount = "widget-deeplink-contact://".count
+                    let contact_id = url.description.dropFirst(trimCount)
+//                    print("Received deep link: \(url)")
+                    print("id контакта: \(contact_id)")
+                }
         }
         .onChange(of: scenePhase){ phase in
             if phase == .active && !isPreview {
@@ -45,7 +50,7 @@ struct BirthdayApp: App {
 //                print("Oh - interesting: I received an unexpected new value.")
 //            }
             
-        }
+        } // .onChange()
     }
 }
 

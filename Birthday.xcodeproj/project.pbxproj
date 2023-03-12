@@ -15,6 +15,7 @@
 		BC3D792829A2A9AA00DFAAB6 /* ContactAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3D792729A2A9AA00DFAAB6 /* ContactAccess.swift */; };
 		BC3F91E0299BFFCC00B736BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91DF299BFFCC00B736BF /* ContentView.swift */; };
 		BC3F91E2299C10E700B736BF /* Months.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91E1299C10E700B736BF /* Months.swift */; };
+		BC411E4729BE1FCB00BE9AE1 /* ContactDetaledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3D792529A2A69400DFAAB6 /* ContactDetaledView.swift */; };
 		BC83E13329B37EAC008C8CA4 /* ZodiacSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83E13229B37EAC008C8CA4 /* ZodiacSign.swift */; };
 		BC84203F29AE7CD700AECD6A /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC5F532299A95BA007F3E51 /* DateExtension.swift */; };
 		BC84204029AE7CDB00AECD6A /* Months.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91E1299C10E700B736BF /* Months.swift */; };
@@ -347,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC84204029AE7CDB00AECD6A /* Months.swift in Sources */,
+				BC411E4729BE1FCB00BE9AE1 /* ContactDetaledView.swift in Sources */,
 				BCD3254329AA43B00086C721 /* BirthdayWidget.swift in Sources */,
 				BCDF546029B2FD1400F0E718 /* ContactNameView.swift in Sources */,
 				BC84203F29AE7CD700AECD6A /* DateExtension.swift in Sources */,
