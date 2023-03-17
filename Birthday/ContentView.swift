@@ -46,6 +46,7 @@ struct TogglePromptView: View {
 
 
 struct ContentView: View {
+    @Binding var presentedContacts: [CNContact]
     @EnvironmentObject private var shared: ContactsModel
     @State private var queryString = ""
     @State private var isMontlyView = true
@@ -59,7 +60,7 @@ struct ContentView: View {
             (contactFormatter.string(from: contact) ?? "???").localizedCaseInsensitiveContains(queryString)
         }
         let usedContacts = queryString.isEmpty ? shared.contacts : searchedContacts
-        return NavigationStack{
+        return NavigationStack(path: $presentedContacts){
             VStack{
                 ToggleView(isOn: $isMontlyView)
                     .font(.callout)
@@ -97,11 +98,11 @@ struct ContentView: View {
 
 struct ListTest_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(presentedContacts: .constant([]))
             .environmentObject(ContactsModel.shared)
             .environment(\.locale, .init(identifier: "ru"))
         
-        ContentView()
+        ContentView(presentedContacts: .constant([]))
             .environmentObject(ContactsModel.shared)
             .environment(\.locale, .init(identifier: "en"))
     }

@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import Contacts
 
 @main
 // A App that creates the ContactsModel object,
@@ -9,6 +10,7 @@ struct BirthdayApp: App {
     @StateObject private var sharedModel = ContactsModel.shared
     @Environment(\.isPreview) var isPreview
     @Environment(\.scenePhase) private var scenePhase
+    @State private var presentedContacts: [CNContact] = []
         
     init() {
         let _ = tryAccessToContact(store: ContactsModel.shared.contactStore)
@@ -21,14 +23,18 @@ struct BirthdayApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(presentedContacts: $presentedContacts)
                 .environmentObject(sharedModel)
                 .onOpenURL{ url in
                     guard url.scheme == "widget-deeplink-contact" else { return }
                     let trimCount = "widget-deeplink-contact://".count
                     let contact_id = url.description.dropFirst(trimCount)
-//                    print("Received deep link: \(url)")
+                    #if DEBUG
                     print("id контакта: \(contact_id)")
+                    #endif
+                    let contact = sharedModel.contacts.first{ contact in contact.identifier == contact_id }
+                    guard let contact else { return }
+                    presentedContacts.append(contact)
                 }
         }
         .onChange(of: scenePhase){ phase in
