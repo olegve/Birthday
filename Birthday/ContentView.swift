@@ -3,6 +3,7 @@ import Contacts
 import Combine
 import WidgetKit
 
+
 struct ToggleView: View {
     @Binding var isOn: Bool
     @Environment(\.isSearching) private var isSearching
@@ -70,6 +71,7 @@ struct ContentView: View {
                         GroupByDaysView(contacts:  usedContacts)
                     }
                 }
+                .navigationDestination(for: CNContact.self){ contact in ContactDetaledView(contact: contact) }
                 .listStyle(.grouped)
                 .navigationTitle("Navigation.Title")
             }

@@ -93,20 +93,27 @@ struct ReminderView: View {
     var contact: CNContact
     @Binding var today: Date
     @Binding var IsBirthdayToday: Bool
-        
+            
     var body: some View {
         let daysBeforeBirthday = today.days(until: contact.birthday!.date!)
         let daysBeforeBirthdayAsString = "\(daysBeforeBirthday)"
-
+        ///  Код добавлен вместо .onAppear{}
+        ///  Осторожно, может быть бесконечный цикл
+        DispatchQueue.main.async {
+            self.IsBirthdayToday = daysBeforeBirthday == 0
+//            print(daysBeforeBirthdayAsString)
+        }
+        
         return Text(daysBeforeBirthdayAsString)
             .multilineTextAlignment(.trailing)
             .lineLimit(1)
             .font(.title3)
             .fontWeight(.semibold)
             .dynamicTypeSize(..<DynamicTypeSize.xxLarge)    // <- RANGE
-            .onAppear{
-                IsBirthdayToday = daysBeforeBirthday == 0
-            }
+///  Решение правильное, но не работает при открывании программы после нажатие на виджет
+//            .onAppear{
+//                IsBirthdayToday = daysBeforeBirthday == 0
+//            }
     }
 }
 
@@ -115,7 +122,7 @@ struct CellView: View {
     @EnvironmentObject var shared: ContactsModel
     var contact: CNContact
     @State var isBirthdayToday = false
-    @State var color = Color.primary
+//    @State var color = Color.primary
 
     var body: some View {
         GeometryReader{ geometry in

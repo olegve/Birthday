@@ -14,23 +14,19 @@ struct SectionView: View {
         
         return Section(header: Text(sectionHeader)){
             ForEach(sortedContacts){ contact in
-                NavigationLink{
-                    ContactDetaledView(contact: contact)
-                } label: {
-                    CellView(contact: contact)
-//                        .swipeActions(edge: .leading, allowsFullSwipe: false) {
-//                            Button {
-//                                print("Звоним на мобильный телефон.")
-//                            } label: {
-//                                Label("Звонок", systemImage: "phone.fill.arrow.up.right")
-//                                    .symbolRenderingMode(.palette)
-//                                    .foregroundStyle(.red, .white)
-//                            }
-//                            .tint(.indigo)
+                NavigationLink(value: contact){ CellView(contact: contact) }
+//                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
+//                        Button {
+//                            print("Звоним на мобильный телефон.")
+//                        } label: {
+//                            Label("Звонок", systemImage: "phone.fill.arrow.up.right")
+//                                .symbolRenderingMode(.palette)
+//                                .foregroundStyle(.red, .white)
+//                        }
+//                        .tint(.indigo)
 //                    }  // swipeAction
-                }
-            }
-        }
+            }  // ForEach
+        }   // Section
     }
 }
 
