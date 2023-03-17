@@ -11,11 +11,13 @@
 		BC21E21B29A0E9BA00835DF5 /* GroupByMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21E21A29A0E9BA00835DF5 /* GroupByMonthView.swift */; };
 		BC21E21D29A101B100835DF5 /* LocalizedStringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21E21C29A101B100835DF5 /* LocalizedStringKey.swift */; };
 		BC21E22029A1041400835DF5 /* GroupByDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21E21F29A1041400835DF5 /* GroupByDaysView.swift */; };
+		BC397F3629C5952A0055BF4E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC397F3529C5952A0055BF4E /* Theme.swift */; };
 		BC3D792629A2A69400DFAAB6 /* ContactDetaledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3D792529A2A69400DFAAB6 /* ContactDetaledView.swift */; };
 		BC3D792829A2A9AA00DFAAB6 /* ContactAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3D792729A2A9AA00DFAAB6 /* ContactAccess.swift */; };
 		BC3F91E0299BFFCC00B736BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91DF299BFFCC00B736BF /* ContentView.swift */; };
 		BC3F91E2299C10E700B736BF /* Months.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91E1299C10E700B736BF /* Months.swift */; };
 		BC411E4729BE1FCB00BE9AE1 /* ContactDetaledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3D792529A2A69400DFAAB6 /* ContactDetaledView.swift */; };
+		BC5B0C3D29C5E57E00BBA707 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC397F3529C5952A0055BF4E /* Theme.swift */; };
 		BC83E13329B37EAC008C8CA4 /* ZodiacSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83E13229B37EAC008C8CA4 /* ZodiacSign.swift */; };
 		BC84203F29AE7CD700AECD6A /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC5F532299A95BA007F3E51 /* DateExtension.swift */; };
 		BC84204029AE7CDB00AECD6A /* Months.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91E1299C10E700B736BF /* Months.swift */; };
@@ -72,6 +74,7 @@
 		BC21E21C29A101B100835DF5 /* LocalizedStringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringKey.swift; sourceTree = "<group>"; };
 		BC21E21F29A1041400835DF5 /* GroupByDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupByDaysView.swift; sourceTree = "<group>"; };
 		BC31EA2229A0AA960019A0E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BC397F3529C5952A0055BF4E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		BC3D792529A2A69400DFAAB6 /* ContactDetaledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetaledView.swift; sourceTree = "<group>"; };
 		BC3D792729A2A9AA00DFAAB6 /* ContactAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAccess.swift; sourceTree = "<group>"; };
 		BC3F91DF299BFFCC00B736BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -153,6 +156,14 @@
 			name = GroupByDays;
 			sourceTree = "<group>";
 		};
+		BC397F3429C594AB0055BF4E /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				BC397F3529C5952A0055BF4E /* Theme.swift */,
+			);
+			name = Theme;
+			sourceTree = "<group>";
+		};
 		BCC5F534299A95D1007F3E51 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +228,7 @@
 				BCE3BB742997B08500976789 /* DataModel */,
 				BCE3BB642997AC6D00976789 /* BirthdayApp.swift */,
 				BC21E21729A0E55F00835DF5 /* Views */,
+				BC397F3429C594AB0055BF4E /* Theme */,
 				BCE3BB682997AC7100976789 /* Assets.xcassets */,
 				BCE3BB6A2997AC7100976789 /* Preview Content */,
 			);
@@ -351,6 +363,7 @@
 				BC411E4729BE1FCB00BE9AE1 /* ContactDetaledView.swift in Sources */,
 				BCD3254329AA43B00086C721 /* BirthdayWidget.swift in Sources */,
 				BCDF546029B2FD1400F0E718 /* ContactNameView.swift in Sources */,
+				BC5B0C3D29C5E57E00BBA707 /* Theme.swift in Sources */,
 				BC84203F29AE7CD700AECD6A /* DateExtension.swift in Sources */,
 				BCD3254129AA43B00086C721 /* BirthdayWidgetBundle.swift in Sources */,
 				BC84204229AE7CE200AECD6A /* DataSets.swift in Sources */,
@@ -373,6 +386,7 @@
 				BC3D792629A2A69400DFAAB6 /* ContactDetaledView.swift in Sources */,
 				BC21E21D29A101B100835DF5 /* LocalizedStringKey.swift in Sources */,
 				BC3F91E0299BFFCC00B736BF /* ContentView.swift in Sources */,
+				BC397F3629C5952A0055BF4E /* Theme.swift in Sources */,
 				BC21E21929A0E5B600835DF5 /* SectionView.swift in Sources */,
 				BC21E21B29A0E9BA00835DF5 /* GroupByMonthView.swift in Sources */,
 				BC3F91E2299C10E700B736BF /* Months.swift in Sources */,

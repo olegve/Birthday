@@ -6,20 +6,6 @@ typealias WidgetDataEntry = ContactsEntry
 
 fileprivate var timelineCounter = 1
 
-// Темы оформления заголовка виджета
-func color(hex: Int) -> Double { Double(hex) / Double(0xFF) }
-
-struct DarkTheme {
-    static let background = Color(red: color(hex: 0x3B), green: color(hex: 0x86), blue: color(hex: 0x86))
-    static let foreground = Color(red: color(hex: 0xE6), green: color(hex: 0xFE), blue: color(hex: 0xF0))
-}
-
-
-struct LightTheme {
-    static let background = Color(red: color(hex: 0x54), green: color(hex: 0xA4), blue: color(hex: 0xA4))
-    static let foreground = Color(red: color(hex: 0x24), green: color(hex: 0x4B), blue: color(hex: 0x4B))
-}
-
 
 struct Provider: TimelineProvider {
     private let shared = ContactsModel.shared

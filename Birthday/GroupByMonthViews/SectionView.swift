@@ -6,6 +6,7 @@ struct SectionView: View {
     let sectionHeader: String
     let contacts: [CNContact]
     @EnvironmentObject var shared: ContactsModel
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         let now = shared.now
@@ -27,6 +28,7 @@ struct SectionView: View {
 //                    }  // swipeAction
             }  // ForEach
         }   // Section
+        .foregroundColor((colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground).opacity(0.75))
     }
 }
 

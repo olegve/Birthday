@@ -1,6 +1,7 @@
 import SwiftUI
 import ContactsUI
 
+
 // TODO: [PPT] Error creating the CFMessagePort needed to communicate with PPT.
 struct ContactDetaledView: UIViewControllerRepresentable {
     //    typealias UIViewControllerType = CNContactViewController
@@ -24,7 +25,9 @@ struct ContactDetaledView: UIViewControllerRepresentable {
         let controller = CNContactViewController(for: localContact)
         controller.allowsEditing = false
         controller.allowsActions = true
+        
         controller.delegate = context.coordinator
+        
         let navigationController = UINavigationController(rootViewController: controller)
         return navigationController
     }
@@ -33,6 +36,7 @@ struct ContactDetaledView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: UIViewControllerRepresentableContext<ContactDetaledView>) {
         #if DEBUG
         print("UIViewController updated. \(context.coordinator.parent.contact.familyName)")
+        
         #endif
     }
     
