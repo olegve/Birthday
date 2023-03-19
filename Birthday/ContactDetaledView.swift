@@ -5,10 +5,15 @@ import ContactsUI
 // TODO: [PPT] Error creating the CFMessagePort needed to communicate with PPT.
 struct ContactDetaledView: UIViewControllerRepresentable {
     //    typealias UIViewControllerType = CNContactViewController
+    #if DEBUG
+    typealias UIViewControllerType = UIViewController
+    @Environment(\.isPreview) var isPreview
+    #else
     typealias UIViewControllerType = UINavigationController
+    #endif
     @EnvironmentObject var shared: ContactsModel
     var contact: CNContact
-    
+
     // MARK: ViewController Representable delegate methods
     func makeCoordinator() -> ContactDetaledView.Coordinator { Coordinator(self) }
     
@@ -25,20 +30,21 @@ struct ContactDetaledView: UIViewControllerRepresentable {
         let controller = CNContactViewController(for: localContact)
         controller.allowsEditing = false
         controller.allowsActions = true
-        
+        #if DEBUG
+        guard !isPreview else { return controller }
+        #endif
         controller.delegate = context.coordinator
-        
         let navigationController = UINavigationController(rootViewController: controller)
         return navigationController
     }
     
-    
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: UIViewControllerRepresentableContext<ContactDetaledView>) {
         #if DEBUG
-        print("UIViewController updated. \(context.coordinator.parent.contact.familyName)")
-        
+        let contact = context.coordinator.parent.contact
+        print("UIViewController updated. \(contact.familyName) \(contact.givenName)")
         #endif
     }
+    
     
     class Coordinator: NSObject, UINavigationControllerDelegate, CNContactViewControllerDelegate {
         var parent: ContactDetaledView
