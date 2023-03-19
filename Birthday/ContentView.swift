@@ -78,14 +78,19 @@ struct ContentView: View {
 
 struct ListTest_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(presentedContacts: .constant([]))
-            .environmentObject(ContactsModel.shared)
-            .environment(\.locale, .init(identifier: "ru"))
+        ZStack{
+            ContentView(presentedContacts: .constant([]))
+        }
+                .environmentObject(ContactsModel.shared)
+                .environment(\.locale, .init(identifier: "ru"))
         
-        ContentView(presentedContacts: .constant([]))
-            .environmentObject(ContactsModel.shared)
-            .environment(\.locale, .init(identifier: "en"))
-            .environment(\.colorScheme, .dark)
+        
+        ZStack{
+            ContentView(presentedContacts: .constant([]))
+        }
+                .environmentObject(ContactsModel.shared)
+                .environment(\.locale, .init(identifier: "en"))
+                .environment(\.colorScheme, .dark)
     }
 }
 
