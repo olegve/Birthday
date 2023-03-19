@@ -1,6 +1,7 @@
 import SwiftUI
 import Combine
 import Contacts
+import ContactsUI
 
 @main
 // A App that creates the ContactsModel object,
@@ -31,32 +32,60 @@ struct BirthdayApp: App {
                     guard url.scheme == "widget-deeplink-contact" else { return }
                     let trimCount = "widget-deeplink-contact://".count
                     let contact_id = url.description.dropFirst(trimCount)
-                    #if DEBUG
-                    print("id контакта: \(contact_id)")
-                    #endif
+                    
+//                    #if DEBUG
+//                    print("[onOpenURL] id контакта: \(contact_id), количество контактов в стеке навигации: \(presentedContacts.count)")
+//                    for contact in presentedContacts {
+//                        print("[onOpenURL] \(contact.familyName) \(contact.givenName)")
+//                    }
+//                    #endif
+//
+//                    if presentedContacts.count > 0 {
+//                        presentedContacts.removeAll()
+//                    }
+//
+//                    #if DEBUG
+//                    print("[onOpenURL] Количество контактов в стеке навигации после первого обновления стека: \(presentedContacts.count)")
+//                    for contact in presentedContacts {
+//                        print("[onOpenURL] \(contact.familyName) \(contact.givenName)")
+//                    }
+//                    #endif
+
                     let contact = sharedModel.contacts.first{ $0.identifier == contact_id }
                     guard let contact  else { return }
-                    presentedContacts.append(contact)
+                    presentedContacts = [contact]
+                    
+//                    #if DEBUG
+//                    print("[onOpenURL] Количество контактов в стеке навигации после второго обновления стека: \(presentedContacts.count)")
+//                    for contact in presentedContacts {
+//                        print("[onOpenURL] \(contact.familyName) \(contact.givenName)")
+//                    }
+//                    #endif
                 }
         }
         .onChange(of: scenePhase){ phase in
-            if phase == .active && !isPreview {
-                sharedModel.updateSync()
+            switch phase {
+            case .active:
+                #if DEBUG
+                print("A'm ative")
+                #endif
+                if !isPreview {
+                    sharedModel.updateSync()
+                }
+            case .background:
+                #if DEBUG
+                print("A'm in background")
+                #endif
+                presentedContacts = []
+            case .inactive:
+                #if DEBUG
+                print("A'm inactive")
+                #endif
+            @unknown default:
+                #if DEBUG
+                print("Oh - interesting: I received an unexpected new value.")
+                #endif
             }
-            
-//            switch phase {
-//            case .active:
-//                print("A'm ative")
-//                if !isPreview {
-//                    sharedModel.update()
-//                }
-//            case .background:
-//                print("A'm in background")
-//            case .inactive:
-//                print("A'm inactive")
-//            @unknown default:
-//                print("Oh - interesting: I received an unexpected new value.")
-//            }
             
         } // .onChange()
     }

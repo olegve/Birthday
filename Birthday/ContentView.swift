@@ -48,8 +48,8 @@ struct ContentView: View {
 //                    .toolbarBackground(colorScheme == .light ? LightTheme.background : DarkTheme.background)
 //                    .toolbarBackground(.visible, for: .navigationBar)
             }
-//            .toolbarBackground(colorScheme == .light ? LightTheme.background : DarkTheme.background)
-//            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarBackground(colorScheme == .light ? LightTheme.background : DarkTheme.background)
+            .toolbarBackground(.visible, for: .navigationBar)
         }  // NavigationStack
         .searchable(text: $queryString, prompt: "Фамилия, имя или отчество")
         .onReceive(NotificationCenter.default.publisher(for: .CNContactStoreDidChange)){ _ in
