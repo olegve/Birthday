@@ -69,5 +69,13 @@ struct ContactDetaledView_Previews: PreviewProvider {
     static var previews: some View {
         ContactDetaledView(contact: dataSet1[0])
             .environmentObject(ContactsModel.shared)
+            .environment(\.colorScheme, .light)
+            .previewDisplayName("Светлая тема")
+        
+        ContactDetaledView(contact: dataSet1[0])
+            .environmentObject(ContactsModel.shared)
+            .environment(\.colorScheme, .dark)
+            .previewDisplayName("Тёмная тема")
+
     }
 }

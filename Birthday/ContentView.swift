@@ -42,11 +42,24 @@ struct ContentView: View {
             .navigationDestination(for: CNContact.self){ contact in
                 ContactDetaledView(contact: contact)
                     /// Такой navigationBarTitle двигает вверх ContactDetaledView
-                    .navigationBarTitle("", displayMode: .inline)
+//                    .navigationBarTitle("", displayMode: .inline)
+                    .navigationBarTitleDisplayMode(.inline)
                     /// Это тоже двигает вверх ContactDetaledView ещё чуть-чуть
                     .edgesIgnoringSafeArea(.top)
-//                    .toolbarBackground(colorScheme == .light ? LightTheme.background : DarkTheme.background)
-//                    .toolbarBackground(.visible, for: .navigationBar)
+                    .toolbarBackground(colorScheme == .light ? LightTheme.background : DarkTheme.background)
+                    .toolbarBackground(.visible, for: .navigationBar)
+                    .toolbar{
+                        ToolbarItem(placement: .primaryAction){
+                            HStack{
+                                Text("\(contact.birthday!.date!.zodiac.rawValue)").padding(.trailing, -3)
+                                Text(",").padding(.horizontal, -3)
+                                Text("62 года")
+                            }
+                            .foregroundColor(colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground)
+                        }
+                    }
+                
+                
             }
 //            .toolbarBackground(colorScheme == .light ? LightTheme.background : DarkTheme.background)
 //            .toolbarBackground(.visible, for: .navigationBar)
