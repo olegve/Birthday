@@ -48,8 +48,8 @@ struct ContentView: View {
 //                    .toolbarBackground(colorScheme == .light ? LightTheme.background : DarkTheme.background)
 //                    .toolbarBackground(.visible, for: .navigationBar)
             }
-            .toolbarBackground(colorScheme == .light ? LightTheme.background : DarkTheme.background)
-            .toolbarBackground(.visible, for: .navigationBar)
+//            .toolbarBackground(colorScheme == .light ? LightTheme.background : DarkTheme.background)
+//            .toolbarBackground(.visible, for: .navigationBar)
         }  // NavigationStack
         .searchable(text: $queryString, prompt: "Фамилия, имя или отчество")
         .onReceive(NotificationCenter.default.publisher(for: .CNContactStoreDidChange)){ _ in
@@ -81,16 +81,18 @@ struct ListTest_Previews: PreviewProvider {
         ZStack{
             ContentView(presentedContacts: .constant([]))
         }
-                .environmentObject(ContactsModel.shared)
-                .environment(\.locale, .init(identifier: "ru"))
-        
+        .environmentObject(ContactsModel.shared)
+        .environment(\.locale, .init(identifier: "ru"))
+        .environment(\.colorScheme, .light)
+        .previewDisplayName("Светлая тема")
         
         ZStack{
             ContentView(presentedContacts: .constant([]))
         }
-                .environmentObject(ContactsModel.shared)
-                .environment(\.locale, .init(identifier: "en"))
-                .environment(\.colorScheme, .dark)
+        .environmentObject(ContactsModel.shared)
+        .environment(\.locale, .init(identifier: "en"))
+        .environment(\.colorScheme, .dark)
+        .previewDisplayName("Тёмная тема")
     }
 }
 

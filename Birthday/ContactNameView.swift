@@ -20,5 +20,7 @@ struct ContactNameView: View {
 struct ContactNameView_Previews: PreviewProvider {
     static var previews: some View {
         ContactNameView(contact: dataSet1[0])
+            .previewDisplayName("Полное имя контакта")
+            .environment(\.locale, .init(identifier: "ru"))
     }
 }

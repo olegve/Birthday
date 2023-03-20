@@ -29,7 +29,7 @@ struct SectionView: View {
 //                    }  // swipeAction
             }  // ForEach
         }   // Section
-        .foregroundColor((colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground).opacity(0.75))
+        .foregroundColor((colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground).opacity(0.85))
     }
 }
 

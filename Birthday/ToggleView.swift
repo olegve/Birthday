@@ -29,12 +29,12 @@ struct CheckmarkToggleStyle: ToggleStyle {
                                     colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground
                                     :
                                     (colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground).opacity(0.5)
-                                                )
+                                )
                         )
                         .offset(x: configuration.isOn ? 11 : -11, y: 0)
                         .animation(.linear(duration: 0.1), value: configuration.isOn)
                 ).cornerRadius(20)
-                .onTapGesture { configuration.isOn.toggle() }
+                .onTapGesture{ configuration.isOn.toggle() }
         }
     }
 }
@@ -86,27 +86,34 @@ struct ToggleView: View {
 }
 
 
-struct ToggleView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack{
-            ToggleView(isOn: .constant(true))
-            ToggleView(isOn: .constant(false))
-        }
-        .environment(\.colorScheme, .light)
-        .font(.callout)
-        .padding(.horizontal)
-        .padding(.vertical, 10)
-        .background(LightTheme.background)
-        
-        VStack{
-            ToggleView(isOn: .constant(true))
-            ToggleView(isOn: .constant(false))
-        }
-        .environment(\.colorScheme, .dark)
-        .font(.callout)
-        .padding(.horizontal)
-        .padding(.vertical, 10)
-        .background(DarkTheme.background)
+struct TodoRowView_Previews_Container: PreviewProvider {
+    struct Container: View {
+        @State var isOn = true
 
+        var body: some View {
+            Group{
+                ToggleView(isOn: $isOn)
+                    .padding(.horizontal)
+                    .padding(.vertical, 10)
+                    .environment(\.colorScheme, .light)
+                    .background(LightTheme.background)
+                    .previewDisplayName("Переключатель в светлой теме")
+                
+        
+                ToggleView(isOn: $isOn)
+                    .padding(.horizontal)
+                    .padding(.vertical, 10)
+                    .environment(\.colorScheme, .dark)
+                    .background(DarkTheme.background)
+                    .previewDisplayName("Переключатель в тёмной теме")
+            }
+            .font(.callout)
+        }
+    }
+    
+    static var previews: some View {
+        Container()
     }
 }
+
+
