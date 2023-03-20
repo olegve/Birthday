@@ -47,6 +47,7 @@ class Theme {
         navigationAppearance.configureWithTransparentBackground()
 //        navigationAppearance.configureWithOpaqueBackground()
 //        navigationAppearance.backgroundColor = background ?? .clear
+//        navigationAppearance.backButtonAppearance =
         
         navigationAppearance.titleTextAttributes = [.foregroundColor: titleColor ?? .black]
         navigationAppearance.largeTitleTextAttributes = [.foregroundColor: titleColor ?? .black]
@@ -55,6 +56,7 @@ class Theme {
         UINavigationBar.appearance().compactAppearance = navigationAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationAppearance
         UINavigationBar.appearance().tintColor = tintColor ?? titleColor ?? .black
+        
      
         /// Этот раздел работает с поисковой строкой
 //        UISearchBar.appearance().backgroundColor = background ?? .clear
