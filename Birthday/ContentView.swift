@@ -53,7 +53,7 @@ struct ContentView: View {
                             HStack{
                                 Text("\(contact.birthday!.date!.zodiac.rawValue)").padding(.trailing, -3)
                                 Text(",").padding(.horizontal, -3)
-                                Text("62 года")
+                                AgeView(contact: contact, today: shared.now)
                             }
                             .foregroundColor(colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground)
                         }

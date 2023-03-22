@@ -18,6 +18,7 @@
 		BC3F91E2299C10E700B736BF /* Months.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91E1299C10E700B736BF /* Months.swift */; };
 		BC411E4729BE1FCB00BE9AE1 /* ContactDetaledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3D792529A2A69400DFAAB6 /* ContactDetaledView.swift */; };
 		BC5B0C3D29C5E57E00BBA707 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC397F3529C5952A0055BF4E /* Theme.swift */; };
+		BC5D2B9129CAD6A30017A31C /* AgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D2B9029CAD6A30017A31C /* AgeView.swift */; };
 		BC83E13329B37EAC008C8CA4 /* ZodiacSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83E13229B37EAC008C8CA4 /* ZodiacSign.swift */; };
 		BC84203F29AE7CD700AECD6A /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC5F532299A95BA007F3E51 /* DateExtension.swift */; };
 		BC84204029AE7CDB00AECD6A /* Months.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91E1299C10E700B736BF /* Months.swift */; };
@@ -80,6 +81,7 @@
 		BC3D792729A2A9AA00DFAAB6 /* ContactAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAccess.swift; sourceTree = "<group>"; };
 		BC3F91DF299BFFCC00B736BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BC3F91E1299C10E700B736BF /* Months.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Months.swift; sourceTree = "<group>"; };
+		BC5D2B9029CAD6A30017A31C /* AgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeView.swift; sourceTree = "<group>"; };
 		BC6D678E29AB9B4B003CA1A8 /* Birthday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Birthday.entitlements; sourceTree = "<group>"; };
 		BC6D678F29AB9B63003CA1A8 /* BirthdayWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BirthdayWidgetExtension.entitlements; sourceTree = "<group>"; };
 		BC83E13229B37EAC008C8CA4 /* ZodiacSign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZodiacSign.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				BCED06B22998FF5700FB2739 /* CellView.swift */,
 				BC3D792529A2A69400DFAAB6 /* ContactDetaledView.swift */,
 				BCA8C1FF29C693CD0043D854 /* ToggleView.swift */,
+				BC5D2B9029CAD6A30017A31C /* AgeView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				BC21E21929A0E5B600835DF5 /* SectionView.swift in Sources */,
 				BC21E21B29A0E9BA00835DF5 /* GroupByMonthView.swift in Sources */,
 				BC3F91E2299C10E700B736BF /* Months.swift in Sources */,
+				BC5D2B9129CAD6A30017A31C /* AgeView.swift in Sources */,
 				BCE3BB652997AC6D00976789 /* BirthdayApp.swift in Sources */,
 				BC83E13329B37EAC008C8CA4 /* ZodiacSign.swift in Sources */,
 				BC3D792829A2A9AA00DFAAB6 /* ContactAccess.swift in Sources */,
