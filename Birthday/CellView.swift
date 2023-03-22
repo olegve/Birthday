@@ -59,6 +59,7 @@ extension View {
 
 struct ContactFullNameView: View {
     var contact: CNContact
+    @EnvironmentObject var shared: ContactsModel
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -78,7 +79,9 @@ struct ContactFullNameView: View {
                     .symbolsFont(style: .callout, weight: .light)
                 Text("\(contact.birthday!.date!, formatter: Self.dateFormatter)")
                     .padding(.horizontal, 5)
-//                Text("25 лет")
+                AgeView(contact: contact, today: shared.now)
+                    .padding(.leading, 5)
+                    .fontWeight(.semibold)
             }
             .fontWeight(.light)
             .font(.callout)
