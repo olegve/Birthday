@@ -17,6 +17,8 @@
 		BC3F91E0299BFFCC00B736BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91DF299BFFCC00B736BF /* ContentView.swift */; };
 		BC3F91E2299C10E700B736BF /* Months.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F91E1299C10E700B736BF /* Months.swift */; };
 		BC411E4729BE1FCB00BE9AE1 /* ContactDetaledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3D792529A2A69400DFAAB6 /* ContactDetaledView.swift */; };
+		BC58CBFF29CB69D40017A269 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BC58CBFD29CB69D40017A269 /* Localizable.stringsdict */; };
+		BC58CC0029CB69D40017A269 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BC58CBFD29CB69D40017A269 /* Localizable.stringsdict */; };
 		BC5B0C3D29C5E57E00BBA707 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC397F3529C5952A0055BF4E /* Theme.swift */; };
 		BC5D2B9129CAD6A30017A31C /* AgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D2B9029CAD6A30017A31C /* AgeView.swift */; };
 		BC83E13329B37EAC008C8CA4 /* ZodiacSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83E13229B37EAC008C8CA4 /* ZodiacSign.swift */; };
@@ -81,6 +83,9 @@
 		BC3D792729A2A9AA00DFAAB6 /* ContactAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAccess.swift; sourceTree = "<group>"; };
 		BC3F91DF299BFFCC00B736BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BC3F91E1299C10E700B736BF /* Months.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Months.swift; sourceTree = "<group>"; };
+		BC58CBFE29CB69D40017A269 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		BC58CC0129CB6A060017A269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Base; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		BC58CC0229CB6A360017A269 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		BC5D2B9029CAD6A30017A31C /* AgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeView.swift; sourceTree = "<group>"; };
 		BC6D678E29AB9B4B003CA1A8 /* Birthday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Birthday.entitlements; sourceTree = "<group>"; };
 		BC6D678F29AB9B63003CA1A8 /* BirthdayWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BirthdayWidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -230,6 +235,7 @@
 				BC31EA2229A0AA960019A0E0 /* Info.plist */,
 				BCC5F534299A95D1007F3E51 /* Utils */,
 				BCED06AD2998FA4200FB2739 /* InfoPlist.strings */,
+				BC58CBFD29CB69D40017A269 /* Localizable.stringsdict */,
 				BCED06A82998F46600FB2739 /* Localizable.strings */,
 				BCE3BB742997B08500976789 /* DataModel */,
 				BCE3BB642997AC6D00976789 /* BirthdayApp.swift */,
@@ -344,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD3254529AA43B30086C721 /* Assets.xcassets in Resources */,
+				BC58CC0029CB69D40017A269 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +361,7 @@
 				BCE3BB6C2997AC7100976789 /* Preview Assets.xcassets in Resources */,
 				BCED06AF2998FA4200FB2739 /* InfoPlist.strings in Resources */,
 				BCED06AA2998F46600FB2739 /* Localizable.strings in Resources */,
+				BC58CBFF29CB69D40017A269 /* Localizable.stringsdict in Resources */,
 				BCE3BB692997AC7100976789 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +423,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		BC58CBFD29CB69D40017A269 /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC58CBFE29CB69D40017A269 /* ru */,
+				BC58CC0129CB6A060017A269 /* Base */,
+				BC58CC0229CB6A360017A269 /* en */,
+			);
+			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
 		BCED06A82998F46600FB2739 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
