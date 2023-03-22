@@ -4,6 +4,7 @@ import Contacts
 struct AgeView: View {
     let contact: CNContact
     let today: Date
+
     var age: Int! {
         guard let cbYear  = contact.birthday!.year else { return nil }
         guard let cbMonth = contact.birthday!.month else { return nil }
@@ -20,6 +21,7 @@ struct AgeView: View {
     
     var body: some View {
         Text(age != nil ? "\(age!) года" : "")
+        Text("\(age) года")
     }
 }
 
