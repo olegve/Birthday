@@ -62,12 +62,25 @@ struct ContactFullNameView: View {
     @EnvironmentObject var shared: ContactsModel
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        formatter.timeStyle = .none
+        formatter.setLocalizedDateFormatFromTemplate("ddMMMMYYYY")
+//        formatter.dateStyle = .long
+//        formatter.timeStyle = .none
         formatter.locale = .autoupdatingCurrent
         return formatter
     }()
+    
+    private func formatter(_ template: String = "ddMMMMYYYY") -> DateFormatter {
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate(template)
+        formatter.locale = .autoupdatingCurrent
+        return formatter
+    }
 
+    var birthday: String {
+        let template = contact.birthday?.year == nil ? "ddMMMM" : "ddMMMMYYYY"
+        return formatter(template).string(from: contact.birthday!.date!)
+    }
+    
     var body: some View {
         VStack(alignment: .leading){
             ContactNameView(contact: contact)
@@ -77,7 +90,8 @@ struct ContactFullNameView: View {
             HStack{
                 Text("\(contact.birthday!.date!.zodiac.description)")
                     .symbolsFont(style: .callout, weight: .light)
-                Text("\(contact.birthday!.date!, formatter: Self.dateFormatter)")
+                Text(birthday)
+//                Text("\(contact.birthday!.date!, formatter: Self.dateFormatter)")
                     .padding(.horizontal, 5)
                 AgeView(contact: contact, today: shared.now)
                     .padding(.leading, 5)
@@ -147,5 +161,10 @@ struct CellView_Previews: PreviewProvider {
         CellView(contact: dataSet1[0])
             .environmentObject(ContactsModel.shared)
             .environment(\.locale, .init(identifier: "ru"))
+        
+        
+        CellView(contact: dataSet1[0])
+            .environmentObject(ContactsModel.shared)
+            .environment(\.locale, .init(identifier: "en"))
     }
 }
