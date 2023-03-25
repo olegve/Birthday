@@ -10,14 +10,14 @@ struct CheckmarkToggleStyle: ToggleStyle {
             Spacer()
             Rectangle()
                 .foregroundColor(configuration.isOn ?
-                    colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground
+                    Theme.foregroundColor(scheme: colorScheme)
                     :
-                    (colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground).opacity(0.5)
+                    (Theme.foregroundColor(scheme: colorScheme)).opacity(0.5)
                 )
                 .frame(width: 51, height: 31, alignment: .center)
                 .overlay(
                     Circle()
-                        .foregroundColor(colorScheme == .light ? LightTheme.background : DarkTheme.background)
+                        .foregroundColor(Theme.backgroundColor(scheme: colorScheme))
                         .padding(.all, 3)
                         .overlay(
                             Image(systemName: configuration.isOn ? "checkmark" : "xmark")
@@ -26,9 +26,9 @@ struct CheckmarkToggleStyle: ToggleStyle {
                                 .font(Font.title.weight(.black))
                                 .frame(width: 8, height: 8, alignment: .center)
                                 .foregroundColor(configuration.isOn ?
-                                    colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground
+                                    Theme.foregroundColor(scheme: colorScheme)
                                     :
-                                    (colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground).opacity(0.5)
+                                    (Theme.foregroundColor(scheme: colorScheme)).opacity(0.5)
                                 )
                         )
                         .offset(x: configuration.isOn ? 11 : -11, y: 0)
@@ -80,8 +80,7 @@ struct ToggleView: View {
             }
         }
         .animation(.default.speed(1), value: isSearching)
-        .foregroundColor(colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground)
-
+        .foregroundColor(Theme.foregroundColor(scheme: colorScheme))
     }
 }
 

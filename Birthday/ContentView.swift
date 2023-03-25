@@ -5,7 +5,6 @@ import WidgetKit
 
 
 struct NavigationBackButton: ViewModifier {
-
     @Environment(\.presentationMode) var presentationMode
     var color: Color
     var text: String?
@@ -14,17 +13,16 @@ struct NavigationBackButton: ViewModifier {
         return content
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading:
-                Button(action: { presentationMode.wrappedValue.dismiss() }, label: {
+                Button(action: { presentationMode.wrappedValue.dismiss() }){
                     HStack(spacing: 2){
                         Image(systemName: "chevron.backward")
-                            .foregroundColor(color)
                         if let text {
                             Text(text)
-                                .foregroundColor(color)
                         }
                     }
-                }) // Button
-            )  // .navigationBarItems
+                    .foregroundColor(color)
+                }   // Button
+            )       // .navigationBarItems
     }
 }
 
@@ -60,7 +58,8 @@ struct ContentView: View {
                     .font(.callout)
                     .padding(.horizontal)
                     .padding(.bottom, 10)
-                    .background(colorScheme == .light ? LightTheme.background : DarkTheme.background)
+                    .background(Theme.backgroundColor(scheme: colorScheme))
+
                 List{
                     if isMontlyView {
                         GroupByMonthView(contacts: usedContacts, thisMonth: shared.now.Month, thisDay: shared.now.day)
@@ -78,27 +77,21 @@ struct ContentView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     /// Это тоже двигает вверх ContactDetaledView ещё чуть-чуть
                     .edgesIgnoringSafeArea(.top)
-                    .toolbarBackground(colorScheme == .light ? LightTheme.background : DarkTheme.background)
+                    .toolbarBackground(Theme.backgroundColor(scheme: colorScheme), for: .navigationBar)
                     .toolbarBackground(.visible, for: .navigationBar)
                     .toolbar{
                         ToolbarItem(placement: .primaryAction){
-                            HStack{
-                                Text(contact.birthday!.date!.zodiac.localizedName)
-                                    .padding(.trailing, -3)
-                                Text(",")
-                                    .padding(.horizontal, -3)
-                                AgeView(contact: contact, today: shared.now)
-                            }
-                            .foregroundColor(colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground)
+                            AgeView(contact: contact, today: shared.now, withZodiac: true)
+                                .foregroundColor(Theme.foregroundColor(scheme: colorScheme))
                         }
                     }
                     .navigationBackButton(
-                        color: colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground,
+                        color: Theme.foregroundColor(scheme: colorScheme),
                         text: String(localized: "Navigation.Title")
                     )
-                    .tint(colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground)
+                    .tint(Theme.foregroundColor(scheme: colorScheme))
             }
-//            .toolbarBackground(colorScheme == .light ? LightTheme.background : DarkTheme.background)
+//            .toolbarBackground(Theme.backgroundColor(scheme: colorScheme))
 //            .toolbarBackground(.visible, for: .navigationBar)
         }  // NavigationStack
         .searchable(text: $queryString, prompt: "Фамилия, имя или отчество")
@@ -117,9 +110,9 @@ struct ContentView: View {
             WidgetCenter.shared.reloadTimelines(ofKind: "BirthdayWidget")
             // Устанавливаем тему
             Theme.navigationBarColors(
-                background: colorScheme == .light ? LightTheme.background : DarkTheme.background,
-                titleColor: colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground,
-                tintColor: colorScheme  == .light ? LightTheme.foreground : DarkTheme.foreground
+                background: Theme.backgroundColor(scheme: colorScheme),
+                titleColor: Theme.foregroundColor(scheme: colorScheme),
+                tintColor:  Theme.foregroundColor(scheme: colorScheme)
             )
         }
     }

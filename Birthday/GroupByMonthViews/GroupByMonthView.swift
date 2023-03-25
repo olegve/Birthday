@@ -38,8 +38,10 @@ struct ListByMonthView_Previews: PreviewProvider {
                     thisMonth: ContactsModel.shared.now.Month,
                     thisDay:   ContactsModel.shared.now.day
                 )
-                .environmentObject(ContactsModel.shared)
             }
         }
+        .environmentObject(ContactsModel.shared)
+        .environment(\.locale, .init(identifier: "ru"))
+        .environment(\.colorScheme, .dark)
     }
 }

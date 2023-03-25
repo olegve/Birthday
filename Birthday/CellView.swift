@@ -91,8 +91,8 @@ struct ContactFullNameView: View {
                 Text("\(contact.birthday!.date!.zodiac.description)")
                     .symbolsFont(style: .callout, weight: .light)
                 Text(birthday) //   Text("\(contact.birthday!.date!, formatter: Self.dateFormatter)")
-                    .padding(.horizontal, 5)
-                AgeView(contact: contact, today: shared.now)
+//                    .padding(.horizontal, 5)
+                AgeView(contact: contact, today: shared.now, withZodiac: false)
                     .padding(.leading, 5)
                     .fontWeight(.semibold)
             }
@@ -117,7 +117,6 @@ struct ReminderView: View {
         ///  Осторожно, может быть бесконечный цикл
         DispatchQueue.main.async {
             self.IsBirthdayToday = daysBeforeBirthday == 0
-//            print(daysBeforeBirthdayAsString)
         }
         
         return Text(daysBeforeBirthdayAsString)

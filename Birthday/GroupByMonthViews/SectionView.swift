@@ -7,11 +7,21 @@ struct SectionView: View {
     let contacts: [CNContact]
     @EnvironmentObject var shared: ContactsModel
     @Environment(\.colorScheme) var colorScheme
+    let contactFormatter: CNContactFormatter = {
+        let formatter = CNContactFormatter()
+        formatter.style = .fullName
+        return formatter
+    }()
     
     var body: some View {
         let now = shared.now
         let sortedContacts = contacts
-            .sorted{ now.days(until: $0.birthday!.date!) < now.days(until: $1.birthday!.date!) }
+            .sorted{ lhs, rhs in
+                let lhsDay = now.days(until: lhs.birthday!.date!)
+                let rhsDay = now.days(until: rhs.birthday!.date!)
+                guard lhsDay == rhsDay else { return lhsDay < rhsDay }
+                return contactFormatter.string(from: lhs)! < contactFormatter.string(from: rhs)!
+            }
         
         return Section(header: Text(sectionHeader)){
             ForEach(sortedContacts){ contact in

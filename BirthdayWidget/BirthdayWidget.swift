@@ -21,13 +21,24 @@ struct Provider: TimelineProvider {
 
     @MainActor
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        let contactFormatter: CNContactFormatter = {
+            let formatter = CNContactFormatter()
+            formatter.style = .fullName
+            return formatter
+        }()
+
 //        var entries: [WidgetDataEntry] = []
 
         // Generate a timeline
         let currentDate = Date()
         shared.updateContacts()
         var contacts = shared.contacts
-            .sorted{ currentDate.days(until: $0.birthday!.date!) < currentDate.days(until: $1.birthday!.date!) }
+            .sorted{ lhs, rhs in
+                let lhsDay = currentDate.days(until: lhs.birthday!.date!)
+                let rhsDay = currentDate.days(until: rhs.birthday!.date!)
+                guard lhsDay == rhsDay else { return lhsDay < rhsDay }
+                return contactFormatter.string(from: lhs)! < contactFormatter.string(from: rhs)!
+            }
         contacts.removeLast( getTailSize(depending: context.family, with: shared.contacts.count) )
         
         let nextDay   = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
@@ -63,10 +74,10 @@ struct HeaderView: View {
             .lineLimit(1)
             .font(.headline)
             .fontWeight(.bold)
-            .foregroundColor(colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground)
+            .foregroundColor(Theme.foregroundColor(scheme: colorScheme))
             .padding(.vertical, 8)
             .frame(maxWidth: .infinity)
-            .background((colorScheme == .light ? LightTheme.background : DarkTheme.background).gradient)
+            .background(Theme.backgroundColor(scheme: colorScheme).gradient)
     }
 }
 

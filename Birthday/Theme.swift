@@ -70,8 +70,15 @@ class Theme {
     
     }
     
-    
     static func navigationBarColors(background : Color?, titleColor : Color? = nil, tintColor : Color? = nil ){
         navigationBarColors(background: background?.uiColor(), titleColor: titleColor?.uiColor(), tintColor: tintColor?.uiColor())
+    }
+    
+    static func foregroundColor(scheme: ColorScheme) -> Color {
+        scheme == .light ? LightTheme.foreground : DarkTheme.foreground
+    }
+    
+    static func backgroundColor(scheme: ColorScheme) -> Color {
+        scheme == .light ? LightTheme.background : DarkTheme.background
     }
 }

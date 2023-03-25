@@ -148,10 +148,10 @@
 			isa = PBXGroup;
 			children = (
 				BC3F91DF299BFFCC00B736BF /* ContentView.swift */,
-				BCDF545E29B2FD1400F0E718 /* ContactNameView.swift */,
 				BC21E21629A0E4D900835DF5 /* GroupByMonthViews */,
 				BC21E21E29A103D300835DF5 /* GroupByDays */,
 				BCED06B22998FF5700FB2739 /* CellView.swift */,
+				BCDF545E29B2FD1400F0E718 /* ContactNameView.swift */,
 				BC3D792529A2A69400DFAAB6 /* ContactDetaledView.swift */,
 				BCA8C1FF29C693CD0043D854 /* ToggleView.swift */,
 				BC5D2B9029CAD6A30017A31C /* AgeView.swift */,
