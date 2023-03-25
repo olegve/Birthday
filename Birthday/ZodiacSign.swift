@@ -24,6 +24,28 @@ public enum Zodiac: String {
     case Undefined
 }
 
+
+extension Zodiac {
+    public var localizedName: String {
+        switch self {
+        case .Aries:       return String(localized: "Aries")
+        case .Taurus:      return String(localized: "Taurus")
+        case .Gemini:      return String(localized: "Gemini")
+        case .Cancer:      return String(localized: "Cancer")
+        case .Lion:        return String(localized: "Lion")
+        case .Virgo:       return String(localized: "Virgo")
+        case .Libra:       return String(localized: "Libra")
+        case .Scorpio:     return String(localized: "Scorpio")
+        case .Sagittarius: return String(localized: "Sagittarius")
+        case .Capricorn:   return String(localized: "Capricorn")
+        case .Aquarius:    return String(localized: "Aquarius")
+        case .Pisces:      return String(localized: "Pisces")
+        default:           return "?"
+        }
+    }
+}
+
+
 extension Zodiac: CaseIterable {
     public static var allCases: [Zodiac] = [
         .Aries,

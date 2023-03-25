@@ -4,6 +4,38 @@ import Combine
 import WidgetKit
 
 
+struct NavigationBackButton: ViewModifier {
+
+    @Environment(\.presentationMode) var presentationMode
+    var color: Color
+    var text: String?
+
+    func body(content: Content) -> some View {
+        return content
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading:
+                Button(action: { presentationMode.wrappedValue.dismiss() }, label: {
+                    HStack(spacing: 2){
+                        Image(systemName: "chevron.backward")
+                            .foregroundColor(color)
+                        if let text {
+                            Text(text)
+                                .foregroundColor(color)
+                        }
+                    }
+                }) // Button
+            )  // .navigationBarItems
+    }
+}
+
+
+extension View {
+    func navigationBackButton(color: Color, text: String? = nil) -> some View {
+        modifier(NavigationBackButton(color: color, text: text))
+    }
+}
+
+
 struct ContentView: View {
     @Binding var presentedContacts: [CNContact]
     
@@ -23,7 +55,7 @@ struct ContentView: View {
         let usedContacts = queryString.isEmpty ? shared.contacts : searchedContacts
         
         return NavigationStack(path: $presentedContacts){
-            VStack{
+            VStack(spacing: 0){
                 ToggleView(isOn: $isMontlyView)
                     .font(.callout)
                     .padding(.horizontal)
@@ -51,15 +83,20 @@ struct ContentView: View {
                     .toolbar{
                         ToolbarItem(placement: .primaryAction){
                             HStack{
-                                Text("\(contact.birthday!.date!.zodiac.rawValue)").padding(.trailing, -3)
-                                Text(",").padding(.horizontal, -3)
+                                Text(contact.birthday!.date!.zodiac.localizedName)
+                                    .padding(.trailing, -3)
+                                Text(",")
+                                    .padding(.horizontal, -3)
                                 AgeView(contact: contact, today: shared.now)
                             }
                             .foregroundColor(colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground)
                         }
                     }
-                
-                
+                    .navigationBackButton(
+                        color: colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground,
+                        text: String(localized: "Navigation.Title")
+                    )
+                    .tint(colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground)
             }
 //            .toolbarBackground(colorScheme == .light ? LightTheme.background : DarkTheme.background)
 //            .toolbarBackground(.visible, for: .navigationBar)

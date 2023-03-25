@@ -17,3 +17,17 @@
 
 
 "Contact.Access.Alert" = "Разрешите доступ у контактам";
+
+/* File: ZodiacSign. */
+"Aries" = "Овен";
+"Taurus" = "Телец";
+"Gemini" = "Близнецы";
+"Cancer" = "Рак";
+"Lion" = "Лев";
+"Virgo" = "Дева";
+"Libra" = "Весы";
+"Scorpio" = "Скорпион";
+"Sagittarius" = "Стрелец";
+"Capricorn" = "Козерог";
+"Aquarius" = "Водолей";
+"Pisces" = "Рыбы";

@@ -17,3 +17,17 @@
 
 
 "Contact.Access.Alert" = "Разрешите доступ у контактам";
+
+/* File: ZodiacSign. */
+"Aries" = "Aries";
+"Taurus" = "Taurus";
+"Gemini" = "Gemini";
+"Cancer" = "Cancer";
+"Lion" = "Lion";
+"Virgo" = "Virgo";
+"Libra" = "Libra";
+"Scorpio" = "Scorpio";
+"Sagittarius" = "Sagittarius";
+"Capricorn" = "Capricorn";
+"Aquarius" = "Aquarius";
+"Pisces" = "Pisces";

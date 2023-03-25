@@ -69,7 +69,7 @@ final class ContactsModel: ObservableObject {
                 CNContactThumbnailImageDataKey as NSString
             ]
         )
-        return contacts.filter{ $0.birthday != nil }
+        return contacts.filter{ $0.birthday?.day != nil && $0.birthday?.month != nil }
     }
     
     func updateContacts(){

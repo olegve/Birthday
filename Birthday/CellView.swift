@@ -77,7 +77,7 @@ struct ContactFullNameView: View {
     }
 
     var birthday: String {
-        let template = contact.birthday?.year == nil ? "ddMMMM" : "ddMMMMYYYY"
+        let template = contact.birthday?.year == nil ? "dMMMM" : "dMMMMYYYY"
         return formatter(template).string(from: contact.birthday!.date!)
     }
     
@@ -90,8 +90,7 @@ struct ContactFullNameView: View {
             HStack{
                 Text("\(contact.birthday!.date!.zodiac.description)")
                     .symbolsFont(style: .callout, weight: .light)
-                Text(birthday)
-//                Text("\(contact.birthday!.date!, formatter: Self.dateFormatter)")
+                Text(birthday) //   Text("\(contact.birthday!.date!, formatter: Self.dateFormatter)")
                     .padding(.horizontal, 5)
                 AgeView(contact: contact, today: shared.now)
                     .padding(.leading, 5)
