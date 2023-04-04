@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC0042A929D76F6F008B2542 /* ModernCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0042A829D76F6F008B2542 /* ModernCellView.swift */; };
 		BC21E21929A0E5B600835DF5 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21E21829A0E5B600835DF5 /* SectionView.swift */; };
 		BC21E21B29A0E9BA00835DF5 /* GroupByMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21E21A29A0E9BA00835DF5 /* GroupByMonthView.swift */; };
 		BC21E21D29A101B100835DF5 /* LocalizedStringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21E21C29A101B100835DF5 /* LocalizedStringKey.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BC0042A829D76F6F008B2542 /* ModernCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModernCellView.swift; sourceTree = "<group>"; };
 		BC21E21829A0E5B600835DF5 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		BC21E21A29A0E9BA00835DF5 /* GroupByMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupByMonthView.swift; sourceTree = "<group>"; };
 		BC21E21C29A101B100835DF5 /* LocalizedStringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringKey.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				BC21E21629A0E4D900835DF5 /* GroupByMonthViews */,
 				BC21E21E29A103D300835DF5 /* GroupByDays */,
 				BCED06B22998FF5700FB2739 /* CellView.swift */,
+				BC0042A829D76F6F008B2542 /* ModernCellView.swift */,
 				BCDF545E29B2FD1400F0E718 /* ContactNameView.swift */,
 				BC3D792529A2A69400DFAAB6 /* ContactDetaledView.swift */,
 				BCA8C1FF29C693CD0043D854 /* ToggleView.swift */,
@@ -391,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC0042A929D76F6F008B2542 /* ModernCellView.swift in Sources */,
 				BCDF545F29B2FD1400F0E718 /* ContactNameView.swift in Sources */,
 				BC21E22029A1041400835DF5 /* GroupByDaysView.swift in Sources */,
 				BCBE9A4529A2035600763F3C /* DataSets.swift in Sources */,

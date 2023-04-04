@@ -1,6 +1,24 @@
 import UIKit
 import SwiftUI
 
+let theme1 = "Theme3B8686"
+let themeName = theme1
+
+// Цвета заголовка
+let titleBackground = Color("\(themeName)/titleBackground")
+let titleForeground = Color("\(themeName)/titleForeground")
+let TitleTint = Color("\(themeName)/titleTint")
+
+// Цвета основного контента
+let contentBackground = Color("\(themeName)/contentBackground")
+let contentForeground = Color("\(themeName)/contentForeground")
+let contentTint = Color("\(themeName)/contentTint")
+let contentSeparator = Color("\(themeName)/separator")
+
+let sectionForeground = Color("\(themeName)/sectionForeground")
+let sectionBackground = Color("\(themeName)/sectionBackground")
+
+
 
 // Темы оформления заголовка виджета
 func color(hex: Int) -> Double { Double(hex) / Double(0xFF) }

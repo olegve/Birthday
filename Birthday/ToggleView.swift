@@ -2,22 +2,16 @@ import SwiftUI
 
 
 struct CheckmarkToggleStyle: ToggleStyle {
-    @Environment(\.colorScheme) var colorScheme
-    
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label
             Spacer()
             Rectangle()
-                .foregroundColor(configuration.isOn ?
-                    Theme.foregroundColor(scheme: colorScheme)
-                    :
-                    (Theme.foregroundColor(scheme: colorScheme)).opacity(0.5)
-                )
+                .foregroundColor(titleForeground.opacity(configuration.isOn ? 1 : 0.5))
                 .frame(width: 51, height: 31, alignment: .center)
                 .overlay(
                     Circle()
-                        .foregroundColor(Theme.backgroundColor(scheme: colorScheme))
+                        .foregroundColor(titleBackground)
                         .padding(.all, 3)
                         .overlay(
                             Image(systemName: configuration.isOn ? "checkmark" : "xmark")
@@ -25,11 +19,7 @@ struct CheckmarkToggleStyle: ToggleStyle {
                                 .aspectRatio(contentMode: .fit)
                                 .font(Font.title.weight(.black))
                                 .frame(width: 8, height: 8, alignment: .center)
-                                .foregroundColor(configuration.isOn ?
-                                    Theme.foregroundColor(scheme: colorScheme)
-                                    :
-                                    (Theme.foregroundColor(scheme: colorScheme)).opacity(0.5)
-                                )
+                                .foregroundColor(titleForeground.opacity(configuration.isOn ? 1 : 0.5))
                         )
                         .offset(x: configuration.isOn ? 11 : -11, y: 0)
                         .animation(.linear(duration: 0.1), value: configuration.isOn)
@@ -63,7 +53,6 @@ struct TogglePromptView: View {
 struct ToggleView: View {
     @Binding var isOn: Bool
     @Environment(\.isSearching) private var isSearching
-    @Environment(\.colorScheme) var colorScheme
 
     let transition = AnyTransition
         .asymmetric(insertion: .slide, removal: .scale)
@@ -80,7 +69,7 @@ struct ToggleView: View {
             }
         }
         .animation(.default.speed(1), value: isSearching)
-        .foregroundColor(Theme.foregroundColor(scheme: colorScheme))
+        .foregroundColor(titleForeground)
     }
 }
 
@@ -95,7 +84,7 @@ struct TodoRowView_Previews_Container: PreviewProvider {
                     .padding(.horizontal)
                     .padding(.vertical, 10)
                     .environment(\.colorScheme, .light)
-                    .background(LightTheme.background)
+                    .background(titleBackground)
                     .previewDisplayName("Переключатель в светлой теме")
                 
         
@@ -103,7 +92,7 @@ struct TodoRowView_Previews_Container: PreviewProvider {
                     .padding(.horizontal)
                     .padding(.vertical, 10)
                     .environment(\.colorScheme, .dark)
-                    .background(DarkTheme.background)
+                    .background(titleBackground)
                     .previewDisplayName("Переключатель в тёмной теме")
             }
             .font(.callout)

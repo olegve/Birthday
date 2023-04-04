@@ -25,8 +25,17 @@ struct SectionView: View {
         
         return Section(header: Text(sectionHeader)){
             ForEach(sortedContacts){ contact in
-                NavigationLink(value: contact){ CellView(contact: contact) }
-//                NavigationLink(destination: ContactDetaledView2(contact: contact)){ CellView(contact: contact) }
+                ZStack {
+                    ModernCellView(contact: contact)
+                    NavigationLink(value: contact) {
+                        EmptyView()
+                    }
+                    .opacity(0.0)
+                    .buttonStyle(PlainButtonStyle())
+//                    ModernCellView(contact: contact)
+                }
+//                NavigationLink(value: contact){ ModernCellView(contact: contact) }
+
 //                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
 //                        Button {
 //                            print("Звоним на мобильный телефон.")
@@ -39,7 +48,9 @@ struct SectionView: View {
 //                    }  // swipeAction
             }  // ForEach
         }   // Section
-        .foregroundColor((colorScheme == .light ? LightTheme.foreground : DarkTheme.foreground).opacity(0.85))
+        .foregroundColor(sectionForeground)
+        .listRowBackground(contentBackground)
+        .listRowSeparatorTint(contentSeparator)
     }
 }
 

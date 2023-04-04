@@ -4,6 +4,7 @@ import Contacts
 
 fileprivate struct ThumbnailView: View {
     var contact: CNContact
+    @Binding var isBirthdayToday: Bool
     
     var letters: String {
         let cherecters = CNContactFormatter.nameOrder(for: contact) == .givenNameFirst ? [contact.givenName.first, contact.familyName.first] : [contact.familyName.first, contact.givenName.first]
@@ -20,6 +21,10 @@ fileprivate struct ThumbnailView: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .clipShape(Circle())
+            .overlay(
+                Circle()
+                    .stroke(isBirthdayToday ? contentTint : titleBackground, lineWidth: 1)
+            )
     }
     
     func imageWith(name: String?) -> UIImage? {
@@ -28,8 +33,8 @@ fileprivate struct ThumbnailView: View {
         guard let context = UIGraphicsGetCurrentContext() else { return nil }
         let nameLabel = UILabel(frame: frame)
         nameLabel.textAlignment = .center
-        nameLabel.backgroundColor = .gray
-        nameLabel.textColor = .white
+        nameLabel.backgroundColor = contentBackground.uiColor()
+        nameLabel.textColor = contentForeground.uiColor()
         nameLabel.font = UIFont.boldSystemFont(ofSize: 35)
         nameLabel.text = name
         nameLabel.layer.render(in: context)
@@ -109,7 +114,7 @@ fileprivate struct ReminderView: View {
     var contact: CNContact
     @Binding var today: Date
     @Binding var IsBirthdayToday: Bool
-            
+       
     var body: some View {
         let daysBeforeBirthday = today.days(until: contact.birthday!.date!)
         let daysBeforeBirthdayAsString = "\(daysBeforeBirthday)"
@@ -118,13 +123,12 @@ fileprivate struct ReminderView: View {
         DispatchQueue.main.async {
             self.IsBirthdayToday = daysBeforeBirthday == 0
         }
-        
-        return Text(daysBeforeBirthdayAsString)
-            .multilineTextAlignment(.trailing)
-            .lineLimit(1)
-            .font(.title3)
-            .fontWeight(.semibold)
-            .dynamicTypeSize(..<DynamicTypeSize.xxLarge)    // <- RANGE
+        return (IsBirthdayToday ? Text(Image(systemName: "birthday.cake")) : Text(daysBeforeBirthdayAsString))
+                    .multilineTextAlignment(.trailing)
+                    .lineLimit(1)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .dynamicTypeSize(..<DynamicTypeSize.xxLarge)    // <- RANGE
 ///  Решение правильное, но не работает при открывании программы после нажатие на виджет
 //            .onAppear{
 //                IsBirthdayToday = daysBeforeBirthday == 0
@@ -133,36 +137,51 @@ fileprivate struct ReminderView: View {
 }
 
 
-struct CellView: View {
+struct ModernCellView: View {
     @EnvironmentObject var shared: ContactsModel
     var contact: CNContact
     @State var isBirthdayToday = false
-//    @State var color = Color.primary
-
+    
     var body: some View {
         GeometryReader{ geometry in
             HStack(alignment: .center){
-                ThumbnailView(contact: contact)
+                ThumbnailView(contact: contact, isBirthdayToday: $isBirthdayToday)
                 ContactFullNameView(contact: contact)
                 Spacer()
                 ReminderView(contact: contact, today: $shared.now, IsBirthdayToday: $isBirthdayToday)
+                    .frame(width: 50, height: geometry.size.height * 0.75)
+                    .background(
+                        RoundedRectangle(cornerRadius: 7, style: .continuous)
+                            .fill(isBirthdayToday ? .pink : contentBackground)
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 7)
+                            .stroke(isBirthdayToday ? contentTint : titleBackground, lineWidth: 1)
+                    )
+//                    .shadow(radius: 3)
             }
-            .foregroundColor(isBirthdayToday ? .red : .primary)
+            .foregroundColor(isBirthdayToday ? contentTint : contentForeground)
+//            .background(contentBackground)
         }
         .frame(height: 40.0)
     }
 }
 
 
-struct CellView_Previews: PreviewProvider {
+struct ModernCellView_Previews: PreviewProvider {
     static var previews: some View {
-        CellView(contact: dataSet1[0])
+        ModernCellView(contact: dataSet1[0])
             .environmentObject(ContactsModel.shared)
             .environment(\.locale, .init(identifier: "ru"))
+            .environment(\.colorScheme, .light)
+            .previewDisplayName("Светлая тема")
+            .background(contentBackground)
         
-        
-        CellView(contact: dataSet1[0])
+        ModernCellView(contact: dataSet1[0])
             .environmentObject(ContactsModel.shared)
             .environment(\.locale, .init(identifier: "en"))
+            .environment(\.colorScheme, .dark)
+            .previewDisplayName("Тёмная тема")
+            .background(contentBackground)
     }
 }

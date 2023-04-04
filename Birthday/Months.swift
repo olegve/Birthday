@@ -22,7 +22,7 @@ extension Month {
         case .jan: return .feb
         case .feb: return .mar
         case .mar: return .apr
-        case .apr: return .mar
+        case .apr: return .may
         case .may: return .jun
         case .jun: return .jul
         case .jul: return .aug

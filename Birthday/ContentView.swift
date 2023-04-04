@@ -41,7 +41,7 @@ struct ContentView: View {
     @State private var queryString = ""
     @State private var isMontlyView = true
     private let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
-    @Environment(\.colorScheme) var colorScheme
+//    @Environment(\.colorScheme) var colorScheme
         
     var body: some View {
         let contactFormatter = CNContactFormatter()
@@ -58,8 +58,7 @@ struct ContentView: View {
                     .font(.callout)
                     .padding(.horizontal)
                     .padding(.bottom, 10)
-                    .background(Theme.backgroundColor(scheme: colorScheme))
-
+                    .background(titleBackground)
                 List{
                     if isMontlyView {
                         GroupByMonthView(contacts: usedContacts, thisMonth: shared.now.Month, thisDay: shared.now.day)
@@ -77,21 +76,21 @@ struct ContentView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     /// Это тоже двигает вверх ContactDetaledView ещё чуть-чуть
                     .edgesIgnoringSafeArea(.top)
-                    .toolbarBackground(Theme.backgroundColor(scheme: colorScheme), for: .navigationBar)
+                    .toolbarBackground(titleBackground, for: .navigationBar)
                     .toolbarBackground(.visible, for: .navigationBar)
                     .toolbar{
                         ToolbarItem(placement: .primaryAction){
                             AgeView(contact: contact, today: shared.now, withZodiac: true)
-                                .foregroundColor(Theme.foregroundColor(scheme: colorScheme))
+                                .foregroundColor(titleForeground)
                         }
                     }
                     .navigationBackButton(
-                        color: Theme.foregroundColor(scheme: colorScheme),
+                        color: titleForeground,
                         text: String(localized: "Navigation.Title")
                     )
-                    .tint(Theme.foregroundColor(scheme: colorScheme))
+                    .tint(titleForeground)
             }
-//            .toolbarBackground(Theme.backgroundColor(scheme: colorScheme))
+//            .toolbarBackground(titleBackground)
 //            .toolbarBackground(.visible, for: .navigationBar)
         }  // NavigationStack
         .searchable(text: $queryString, prompt: "Фамилия, имя или отчество")
@@ -110,9 +109,9 @@ struct ContentView: View {
             WidgetCenter.shared.reloadTimelines(ofKind: "BirthdayWidget")
             // Устанавливаем тему
             Theme.navigationBarColors(
-                background: Theme.backgroundColor(scheme: colorScheme),
-                titleColor: Theme.foregroundColor(scheme: colorScheme),
-                tintColor:  Theme.foregroundColor(scheme: colorScheme)
+                background: titleBackground,
+                titleColor: titleForeground,
+                tintColor:  titleForeground
             )
         }
     }
