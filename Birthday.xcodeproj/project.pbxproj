@@ -12,6 +12,7 @@
 		BC21E21B29A0E9BA00835DF5 /* GroupByMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21E21A29A0E9BA00835DF5 /* GroupByMonthView.swift */; };
 		BC21E21D29A101B100835DF5 /* LocalizedStringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21E21C29A101B100835DF5 /* LocalizedStringKey.swift */; };
 		BC21E22029A1041400835DF5 /* GroupByDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21E21F29A1041400835DF5 /* GroupByDaysView.swift */; };
+		BC34D5A629DC7D1000E86508 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCE3BB682997AC7100976789 /* Assets.xcassets */; };
 		BC397F3629C5952A0055BF4E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC397F3529C5952A0055BF4E /* Theme.swift */; };
 		BC3D792629A2A69400DFAAB6 /* ContactDetaledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3D792529A2A69400DFAAB6 /* ContactDetaledView.swift */; };
 		BC3D792829A2A9AA00DFAAB6 /* ContactAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3D792729A2A9AA00DFAAB6 /* ContactAccess.swift */; };
@@ -353,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD3254529AA43B30086C721 /* Assets.xcassets in Resources */,
+				BC34D5A629DC7D1000E86508 /* Assets.xcassets in Resources */,
 				BC58CC0029CB69D40017A269 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

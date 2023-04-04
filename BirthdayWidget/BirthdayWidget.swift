@@ -67,17 +67,15 @@ struct ContactsEntry: TimelineEntry {
 
 
 struct HeaderView: View {
-    @Environment(\.colorScheme) var colorScheme
-    
     var body: some View {
         Text("Ближайшие дни рождения")
             .lineLimit(1)
             .font(.headline)
             .fontWeight(.bold)
-            .foregroundColor(Theme.foregroundColor(scheme: colorScheme))
+            .foregroundColor(titleForeground)
             .padding(.vertical, 8)
             .frame(maxWidth: .infinity)
-            .background(Theme.backgroundColor(scheme: colorScheme).gradient)
+            .background(titleBackground.gradient)
     }
 }
 
@@ -95,7 +93,7 @@ struct ContactView: View {
             Text("\(days)")
                 .fontWeight(.bold)
         }
-        .foregroundColor(days == 0 ? .red : .primary)
+        .foregroundColor(days == 0 ? contentTint : contentForeground)
     }
 }
 
@@ -128,6 +126,7 @@ struct BirthdayWidgetEntryView : View {
                                 .frame(height: 19)
                                 .padding(.horizontal, 4)
                             Divider()
+                                .background(contentSeparator)
                         }
                     }
                 }
@@ -148,6 +147,7 @@ struct BirthdayWidgetEntryView : View {
                                 .frame(height: 19)
                                 .padding(.horizontal, 4)
                             Divider()
+                                .background(contentSeparator)
                         }
                     }
                 }
