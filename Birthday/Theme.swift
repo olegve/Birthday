@@ -13,6 +13,7 @@ let TitleTint = Color("\(themeName)/titleTint")
 let contentBackground = Color("\(themeName)/contentBackground")
 let contentForeground = Color("\(themeName)/contentForeground")
 let contentTint = Color("\(themeName)/contentTint")
+let contentTintBackground = Color("\(themeName)/contentTintBackground")
 let contentSeparator = Color("\(themeName)/separator")
 
 let sectionForeground = Color("\(themeName)/sectionForeground")

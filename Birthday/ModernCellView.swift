@@ -2,43 +2,44 @@ import SwiftUI
 import Contacts
 
 
+/// Фотография контакта, если она есть, иначе его инициалы
 fileprivate struct ThumbnailView: View {
     var contact: CNContact
     @Binding var isBirthdayToday: Bool
+    let diameter: Double
     
     var letters: String {
-        let cherecters = CNContactFormatter.nameOrder(for: contact) == .givenNameFirst ? [contact.givenName.first, contact.familyName.first] : [contact.familyName.first, contact.givenName.first]
-        return String(cherecters.compactMap{ $0 })
+        let charecters = CNContactFormatter.nameOrder(for: contact) == .givenNameFirst ? [contact.givenName.first, contact.familyName.first] : [contact.familyName.first, contact.givenName.first]
+        return String(charecters.compactMap{ $0 })
     }
     
-    var thumbnail: Image {
-        let image = contact.imageDataAvailable ? UIImage(data: contact.thumbnailImageData!) : imageWith(name: letters)
-        return Image(uiImage: image!)
+    var imageAvailable: Bool { contact.imageDataAvailable }
+    
+    func image(avalible: Bool) -> Image? {
+        guard avalible else { return nil }
+        return Image(uiImage: UIImage(data: contact.thumbnailImageData!)!).resizable()
+    }
+    
+    func letters(avalible: Bool) -> Text? {
+        guard avalible else { return nil }
+        return  Text(letters)
     }
     
     var body: some View {
-        thumbnail
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .clipShape(Circle())
-            .overlay(
-                Circle()
-                    .stroke(isBirthdayToday ? contentTint : titleBackground, lineWidth: 1)
+        VStack {
+            image(avalible: imageAvailable)
+            letters(avalible: !imageAvailable)
+                .frame(width: diameter,  height: diameter)
+                .font(.system(size: diameter * 0.44, weight: .bold, design: .none))
+                .background(contentBackground)
+                .foregroundColor(contentForeground)
+        }
+        .aspectRatio(contentMode: .fit)
+        .clipShape(Circle())
+        .overlay(
+            Circle()
+                .stroke(isBirthdayToday ? contentTintBackground : titleBackground, lineWidth: 1)
             )
-    }
-    
-    func imageWith(name: String?) -> UIImage? {
-        let frame = CGRect(x: 0, y: 0, width: 80, height: 80)
-        UIGraphicsBeginImageContext(frame.size)
-        guard let context = UIGraphicsGetCurrentContext() else { return nil }
-        let nameLabel = UILabel(frame: frame)
-        nameLabel.textAlignment = .center
-        nameLabel.backgroundColor = contentBackground.uiColor()
-        nameLabel.textColor = contentForeground.uiColor()
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 35)
-        nameLabel.text = name
-        nameLabel.layer.render(in: context)
-        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }
 
@@ -124,11 +125,11 @@ fileprivate struct ReminderView: View {
             self.IsBirthdayToday = daysBeforeBirthday == 0
         }
         return (IsBirthdayToday ? Text(Image(systemName: "birthday.cake")) : Text(daysBeforeBirthdayAsString))
-                    .multilineTextAlignment(.trailing)
-                    .lineLimit(1)
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .dynamicTypeSize(..<DynamicTypeSize.xxLarge)    // <- RANGE
+            .multilineTextAlignment(.trailing)
+            .lineLimit(1)
+            .font(.title3)
+            .fontWeight(.semibold)
+            .dynamicTypeSize(..<DynamicTypeSize.xxLarge)    // <- RANGE
 ///  Решение правильное, но не работает при открывании программы после нажатие на виджет
 //            .onAppear{
 //                IsBirthdayToday = daysBeforeBirthday == 0
@@ -145,23 +146,27 @@ struct ModernCellView: View {
     var body: some View {
         GeometryReader{ geometry in
             HStack(alignment: .center){
-                ThumbnailView(contact: contact, isBirthdayToday: $isBirthdayToday)
+                // Фото контакта
+                ThumbnailView(contact: contact, isBirthdayToday: $isBirthdayToday, diameter: geometry.size.height)
+                // Полное имя контакта, дата рождения и сеолько ему в этот день исполняется лет
                 ContactFullNameView(contact: contact)
                 Spacer()
-                ReminderView(contact: contact, today: $shared.now, IsBirthdayToday: $isBirthdayToday)
-                    .frame(width: 50, height: geometry.size.height * 0.75)
-                    .background(
-                        RoundedRectangle(cornerRadius: 7, style: .continuous)
-                            .fill(isBirthdayToday ? .pink : contentBackground)
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 7)
-                            .stroke(isBirthdayToday ? contentTint : titleBackground, lineWidth: 1)
-                    )
-//                    .shadow(radius: 3)
+                VStack{
+                    // Количество дней до дня рождения
+                    ReminderView(contact: contact, today: $shared.now, IsBirthdayToday: $isBirthdayToday)
+                        .frame(width: 50, height: geometry.size.height * 0.75)
+                        .background(
+                            RoundedRectangle(cornerRadius: 7, style: .continuous)
+                                .fill(contentBackground)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 7)
+                                .stroke(isBirthdayToday ? contentTintBackground : titleBackground, lineWidth: 1)
+                        )
+                    //                    .shadow(radius: 3)
+                }
             }
             .foregroundColor(isBirthdayToday ? contentTint : contentForeground)
-//            .background(contentBackground)
         }
         .frame(height: 40.0)
     }
@@ -170,12 +175,28 @@ struct ModernCellView: View {
 
 struct ModernCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ModernCellView(contact: dataSet1[0])
-            .environmentObject(ContactsModel.shared)
-            .environment(\.locale, .init(identifier: "ru"))
-            .environment(\.colorScheme, .light)
-            .previewDisplayName("Светлая тема")
-            .background(contentBackground)
+        VStack{
+            HStack{
+                Text("ДЕ")
+                    .frame(width: 80,  height: 80)
+                    .font(.system(size: 35, weight: .bold, design: .none))
+                    .background(.gray)
+                    .foregroundColor(.white)
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(Circle())
+                    .overlay(
+                        Circle()
+                            .stroke(.red, lineWidth: 1)
+                    )
+                Spacer()
+            }
+            ModernCellView(contact: dataSet1[0])
+                .environmentObject(ContactsModel.shared)
+                .environment(\.locale, .init(identifier: "ru"))
+                .environment(\.colorScheme, .light)
+                .previewDisplayName("Светлая тема")
+                .background(contentBackground)
+        }
         
         ModernCellView(contact: dataSet1[0])
             .environmentObject(ContactsModel.shared)

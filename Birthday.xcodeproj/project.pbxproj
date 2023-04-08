@@ -48,6 +48,7 @@
 		BCED06AA2998F46600FB2739 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCED06A82998F46600FB2739 /* Localizable.strings */; };
 		BCED06AF2998FA4200FB2739 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCED06AD2998FA4200FB2739 /* InfoPlist.strings */; };
 		BCED06B32998FF5700FB2739 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED06B22998FF5700FB2739 /* CellView.swift */; };
+		BCFBA87529E14EC700EE6FB1 /* TextAsImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFBA87429E14EC700EE6FB1 /* TextAsImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		BCED06B02998FA5800FB2739 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BCED06B12998FA9600FB2739 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BCED06B22998FF5700FB2739 /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		BCFBA87429E14EC700EE6FB1 /* TextAsImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAsImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				BC21E21C29A101B100835DF5 /* LocalizedStringKey.swift */,
 				BCBE9A4429A2035600763F3C /* DataSets.swift */,
 				BC3D792729A2A9AA00DFAAB6 /* ContactAccess.swift */,
+				BCFBA87429E14EC700EE6FB1 /* TextAsImage.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				BCC5F533299A95BA007F3E51 /* DateExtension.swift in Sources */,
 				BCA8C20029C693CD0043D854 /* ToggleView.swift in Sources */,
 				BCED06B32998FF5700FB2739 /* CellView.swift in Sources */,
+				BCFBA87529E14EC700EE6FB1 /* TextAsImage.swift in Sources */,
 				BC3D792629A2A69400DFAAB6 /* ContactDetaledView.swift in Sources */,
 				BC21E21D29A101B100835DF5 /* LocalizedStringKey.swift in Sources */,
 				BC3F91E0299BFFCC00B736BF /* ContentView.swift in Sources */,

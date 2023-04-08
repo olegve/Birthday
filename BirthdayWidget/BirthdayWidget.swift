@@ -90,7 +90,7 @@ struct ContactView: View {
             ContactNameView(contact: contact)
                 .lineLimit(1)
             Spacer()
-            Text("\(days)")
+            (days > 0 ? Text("\(days)") : Text(Image(systemName: "birthday.cake")))
                 .fontWeight(.bold)
         }
         .foregroundColor(days == 0 ? contentTint : contentForeground)

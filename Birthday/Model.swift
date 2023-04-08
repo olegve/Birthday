@@ -82,3 +82,47 @@ final class ContactsModel: ObservableObject {
         }
     }
 }
+
+
+enum ContactSource {
+    case Apple
+    case VK
+    case Facebook
+}
+
+final class Contact: Identifiable {
+    let source: ContactSource
+    let contact: CNContact
+    
+    init(_ contact: CNContact, source: ContactSource) {
+        self.contact = contact
+        self.source = source
+    }
+    
+    var id: String { contact.identifier }
+    var firstName: String { contact.givenName }
+    var middleName: String { contact.middleName }
+    var lastName: String { contact.familyName }
+    var fullName: String {
+        let contactFormatter: CNContactFormatter = {
+            let formatter = CNContactFormatter()
+            formatter.style = .fullName
+            return formatter
+        }()
+        return contactFormatter.string(from: contact) ?? "unknown"
+    }
+    var birthday: DateComponents? { contact.birthday }
+    
+    var imageAvalible: Bool { contact.imageDataAvailable }
+    var imageData: Data? { contact.thumbnailImageData }
+    var image: Image? {
+        guard let data = contact.thumbnailImageData else { return nil }
+        return Image(uiImage: UIImage(data: data)!).resizable()
+    }
+}
+
+
+extension Contact: CustomStringConvertible {
+    var description: String { fullName }
+}
+
